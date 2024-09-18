@@ -1,34 +1,37 @@
 <!doctype html>
 <html lang="zh"><head>
-<title>文章归档 - Em_Lin</title>
+<title>MD5 - Em_Lin</title>
 <meta charset="UTF-8">
 <meta name="keywords" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
 <link rel="shortcut icon" href="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" type="image/png" />
-<meta name="description" content="菜鸟、工作、好卷">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Em_Lin">
-<meta property="og:url" content="http://ermu0.github.io/archives/index.html">
+<meta name="description" content="原理MD5能够将任意长度的数据输入映射为固定长度的128位散列值。 它加密过程可以分成3部分：数据填充、数据处理以及数据输出。 1 数据填充MD5的填充规则与SHA-1以及SHA-256相同。如果数据长度不够，则会先在数据末尾填充1bit（二进制符号还是1），之后就疯狂填充0，直到448位为止，预留64位作为原数据的长度值填充。 如果还是留有疑问，可以移步查看这篇文章：https:&#x2F;&#x2F;ermu0.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MD5">
+<meta property="og:url" content="http://ermu0.github.io/2024/09/18/algorithm/md5/index.html">
 <meta property="og:site_name" content="Em_Lin">
-<meta property="og:description" content="菜鸟、工作、好卷">
+<meta property="og:description" content="原理MD5能够将任意长度的数据输入映射为固定长度的128位散列值。 它加密过程可以分成3部分：数据填充、数据处理以及数据输出。 1 数据填充MD5的填充规则与SHA-1以及SHA-256相同。如果数据长度不够，则会先在数据末尾填充1bit（二进制符号还是1），之后就疯狂填充0，直到448位为止，预留64位作为原数据的长度值填充。 如果还是留有疑问，可以移步查看这篇文章：https:&#x2F;&#x2F;ermu0.">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-17T16:00:00.000Z">
 <meta property="article:author" content="Em_Lin">
+<meta property="article:tag" content="tasks">
 <meta name="twitter:card" content="summary">
 
 <link rel="stylesheet" href="/lib/fancybox/fancybox.css">
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1726666381098">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1726666381051">
 
-<link rel="stylesheet" href="/css/style.css?v=1726666381098">
+<link rel="stylesheet" href="/css/style.css?v=1726666381051">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1726666381098">
+        <link rel="stylesheet" href="/custom.css?v=1726666381051">
     
 
 
@@ -38,7 +41,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1726666381098"></script>
+<script async src="/js/app.js?v=1726666381051"></script>
 
  
 
@@ -301,18 +304,16 @@
 -->    
 
     </div>
-</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><section class="nexmoe-posts">
-    <div class="nexmoe-post">
-        <a href="/2024/09/18/algorithm/tea/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="TEA" loading="lazy">
-                    <h1>TEA</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta">
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="MD5" loading="lazy">
+            <h1>MD5</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2024年09月18日</a>
         
@@ -327,284 +328,115 @@
     
 </div>
 
-        <article>
-            
-        </article>
+    <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>MD5能够将任意长度的数据输入映射为固定长度的128位散列值。</p>
+<p>它加密过程可以分成3部分：数据填充、数据处理以及数据输出。</p>
+<h2 id="1-数据填充"><a href="#1-数据填充" class="headerlink" title="1 数据填充"></a>1 数据填充</h2><p>MD5的填充规则与SHA-1以及SHA-256相同。如果数据长度不够，则会先在数据末尾填充1bit（二进制符号还是1），之后就疯狂填充0，直到448位为止，预留64位作为原数据的长度值填充。</p>
+<p>如果还是留有疑问，可以移步查看这篇文章：<br><a href="https://ermu0.github.io/2024/09/17/algorithm/sha1_sha256/" title="《SHA-1与SHA-256》——Em_Lin">https://ermu0.github.io/2024/09/17/algorithm/sha1_sha256/</a></p>
+<h2 id="2-数据处理"><a href="#2-数据处理" class="headerlink" title="2 数据处理"></a>2 数据处理</h2><p>MD5算法将填充后的数据按512位（64字节）块进行处理。每个块会被分成16个32位的子块，记作M[0], M[1], …, M[15]。</p>
+<p>注意数据处理前首先要初始化四个变量值：</p>
+<ul>
+<li>A = 0x67452301</li>
+<li>B = 0xefcdab89</li>
+<li>C = 0x98badcfe</li>
+<li>D = 0x10325476</li>
+</ul>
+<p>然后依次进行4轮计算，每轮计算包括16次循环操作。</p>
+<p><strong>四个轮次的主要操作步骤：</strong></p>
+<p><strong>1. 定义辅助函数：</strong>（四个非线性函数）</p>
+<ul>
+<li>F(X, Y, Z) = (X AND Y) OR ((NOT X) AND Z)</li>
+<li>G(X, Y, Z) = (X AND Z) OR (Y AND (NOT Z))</li>
+<li>H(X, Y, Z) = X XOR Y XOR Z</li>
+<li>I(X, Y, Z) = Y XOR (X OR (NOT Z))</li>
+</ul>
+<p><strong>2. 预定义常量表</strong></p>
+<p>MD5使用一个由64个元素组成的常量表，每个元素是2^32乘以正弦函数的绝对值的小数部分。表中的元素 = 2^32 * abs(sin(i))</p>
+<p><strong>3. 循环处理</strong></p>
+<p>每轮循环中，使用对应的辅助函数和常量表，对A、B、C、D进行变换。</p>
+<p>（下面的s是每轮的移位位数，T[i]是基于正弦函数得出的常量表元素，M[k]是当前块的子块。）</p>
+<p><strong>轮次一：F函数</strong></p>
+<ul>
+<li>F(X, Y, Z) = (X AND Y) OR ((NOT X) AND Z)</li>
+<li>A = B + ((A + F(B, C, D) + M[k] + T[i]) &lt;&lt;&lt; s)</li>
+</ul>
+<p><strong>轮次二：G函数</strong></p>
+<ul>
+<li>G(X, Y, Z) = (X AND Z) OR (Y AND (NOT Z))</li>
+<li>A = B + ((A + G(B, C, D) + M[k] + T[i]) &lt;&lt;&lt; s)</li>
+</ul>
+<p><strong>轮次三：H函数</strong></p>
+<ul>
+<li>H(X, Y, Z) = X XOR Y XOR Z</li>
+<li>A = B + ((A + H(B, C, D) + M[k] + T[i]) &lt;&lt;&lt; s)</li>
+</ul>
+<p><strong>轮次四：I函数</strong></p>
+<ul>
+<li>I(X, Y, Z) = Y XOR (X OR (NOT Z))</li>
+<li>A = B + ((A + I(B, C, D) + M[k] + T[i]) &lt;&lt;&lt; s)</li>
+</ul>
+<p>每一个轮次会循环计算16次，也就是说会把这16个块（16个32位数据）依次放入进行运算。</p>
+<h2 id="3-数据处理"><a href="#3-数据处理" class="headerlink" title="3 数据处理"></a>3 数据处理</h2><p>四轮循环结束后的A、B、C、D会以小端序存储，然后叠加到初始的四个变量中，叠加后合并形成最终的128位散列值。</p>
+
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Em_Lin<br>
+        <strong>本文链接：</strong><a href="http://ermu0.github.io/2024/09/18/algorithm/md5/" title="http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;18&#x2F;algorithm&#x2F;md5&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;18&#x2F;algorithm&#x2F;md5&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0 CN</a> 协议进行许可
+
+        
     </div>
 
-    <div class="nexmoe-post">
-        <a href="/2024/09/18/algorithm/aes/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="AES" loading="lazy">
-                    <h1>AES</h1>
-                </div>
-            
-        </a>
 
-        <div class="nexmoe-post-meta">
-    <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2024年09月18日</a>
-        
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a>
-        
-        
-    </div>
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
     
-    
-    
-    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/tasks/" rel="tag">tasks</a>
     
 </div>
+  
+  
 
-        <article>
-            
-        </article>
-    </div>
+  
+      <div class="nexmoe-post-footer">
+          <script src="https://giscus.app/client.js"
+    data-repo="nexmoe/nexmoe.com"
+    data-repo-id="R_kgDOJI1XUA"
+    data-category="General"
+    data-category-id="DIC_kwDOJI1XUM4CU1nn"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="en"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
 
-    <div class="nexmoe-post">
-        <a href="/2024/09/18/algorithm/des/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="DES" loading="lazy">
-                    <h1>DES</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta">
-    <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2024年09月18日</a>
-        
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a>
-        
-        
-    </div>
-    
-    
-    
-    
-    
-</div>
-
-        <article>
-            
-        </article>
-    </div>
-
-    <div class="nexmoe-post">
-        <a href="/2024/09/18/algorithm/md5/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="MD5" loading="lazy">
-                    <h1>MD5</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta">
-    <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2024年09月18日</a>
-        
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a>
-        
-        
-    </div>
-    
-    
-    
-    
-    
-</div>
-
-        <article>
-            
-        </article>
-    </div>
-
-    <div class="nexmoe-post">
-        <a href="/2024/09/17/reverse/tasks/task0_day3/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="task0_day3" loading="lazy">
-                    <h1>task0_day3</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta">
-    <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2024年09月17日</a>
-        
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E9%80%86%E5%90%91/">逆向</a>
-        
-        
-    </div>
-    
-    
-    
-    
-    
-</div>
-
-        <article>
-            
-        </article>
-    </div>
-
-    <div class="nexmoe-post">
-        <a href="/2024/09/17/algorithm/sha1_sha256/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="SHA-1与SHA-256" loading="lazy">
-                    <h1>SHA-1与SHA-256</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta">
-    <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2024年09月17日</a>
-        
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a>
-        
-        
-    </div>
-    
-    
-    
-    
-    
-</div>
-
-        <article>
-            
-        </article>
-    </div>
-
-    <div class="nexmoe-post">
-        <a href="/2024/09/17/algorithm/rc4/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="RC4" loading="lazy">
-                    <h1>RC4</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta">
-    <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2024年09月17日</a>
-        
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a>
-        
-        
-    </div>
-    
-    
-    
-    
-    
-</div>
-
-        <article>
-            
-        </article>
-    </div>
-
-    <div class="nexmoe-post">
-        <a href="/2024/09/14/reverse/tasks/task0_day2/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="task0_day2" loading="lazy">
-                    <h1>task0_day2</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta">
-    <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2024年09月14日</a>
-        
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E9%80%86%E5%90%91/">逆向</a>
-        
-        
-    </div>
-    
-    
-    
-    
-    
-</div>
-
-        <article>
-            
-        </article>
-    </div>
-
-    <div class="nexmoe-post">
-        <a href="/2024/09/13/reverse/tasks/task0_day1/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="task0_day1" loading="lazy">
-                    <h1>task0_day1</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta">
-    <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2024年09月13日</a>
-        
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E9%80%86%E5%90%91/">逆向</a>
-        
-        
-    </div>
-    
-    
-    
-    
-    
-</div>
-
-        <article>
-            
-        </article>
-    </div>
-
-    <div class="nexmoe-post">
-        <a href="/2024/09/10/hello-world/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="Em_Lin（安卓菜鸟前来报到）" loading="lazy">
-                    <h1>Em_Lin（安卓菜鸟前来报到）</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta">
-    <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2024年09月10日</a>
-        
-        
-    </div>
-    
-    
-    
-    
-    
-</div>
-
-        <article>
-            
-        </article>
-    </div>
-</section> </div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
         <div class="nexmoe-tool">
 
             
 
             
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%A1%AB%E5%85%85"><span class="toc-number">1.1.</span> <span class="toc-text">1 数据填充</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">2 数据处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">3 数据处理</span></a></li></ol></li></ol>
+                </div>
+            </button>
             
 
             

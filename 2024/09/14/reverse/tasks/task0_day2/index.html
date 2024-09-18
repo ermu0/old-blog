@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>task0_day2 - Em_Lin</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" type="image/png" />
+<meta name="description" content="继续学习 学习内容一、B站视频6~8：（视频讲解前试着逆）3个课件都做了一遍，下面附上写的脚本（c语言）： 课件6课件6相对比较简单，要不就是按照伪c直接正向写出，要不就用动态调试查看字符串信息（下面给出了动调的图片） 123456789101112131415#include &lt;stdio.h&gt;#include &lt;string.h&gt;int main()&amp;#123;	cha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="task0_day2">
+<meta property="og:url" content="http://ermu0.github.io/2024/09/14/reverse/tasks/task0_day2/index.html">
+<meta property="og:site_name" content="Em_Lin">
+<meta property="og:description" content="继续学习 学习内容一、B站视频6~8：（视频讲解前试着逆）3个课件都做了一遍，下面附上写的脚本（c语言）： 课件6课件6相对比较简单，要不就是按照伪c直接正向写出，要不就用动态调试查看字符串信息（下面给出了动调的图片） 123456789101112131415#include &lt;stdio.h&gt;#include &lt;string.h&gt;int main()&amp;#123;	cha">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://c.img.dasctf.com/LightPicture/2024/09/87b02188c9b1f669.png">
+<meta property="og:image" content="https://c.img.dasctf.com/LightPicture/2024/09/e20c175acb87ebb6.png">
+<meta property="og:image" content="https://c.img.dasctf.com/LightPicture/2024/09/19541dfec7e9bd4c.png">
+<meta property="og:image" content="https://c.img.dasctf.com/LightPicture/2024/09/d57c3be77ea9b4d6.png">
+<meta property="og:image" content="https://c.img.dasctf.com/LightPicture/2024/09/f257b7c7005fe0b2.png">
+<meta property="og:image" content="https://c.img.dasctf.com/LightPicture/2024/09/b6116b64ab4b1b9c.png">
+<meta property="article:published_time" content="2024-09-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-13T16:00:00.000Z">
+<meta property="article:author" content="Em_Lin">
+<meta property="article:tag" content="tasks">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://c.img.dasctf.com/LightPicture/2024/09/87b02188c9b1f669.png">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1726666381065">
+
+<link rel="stylesheet" href="/css/style.css?v=1726666381065">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1726666381065">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1726666381065"></script>
+
+ 
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+
+  gtag("config", "G-4D4ZJ9G024");
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 5.4.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Em_Lin"><img src="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" alt="Em_Lin"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Em_Lin">
+            <img src="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" alt="Em_Lin" alt="Em_Lin">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>10</div>
+        <div><span>标签</span>2</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://nexmoe.com/3145B9F.html"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/628727362"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/ermu0/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://nexmoe.com/atom.xml"
+			target="_blank"
+			mdui-tooltip="{content: 'RSS'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/加密算法/">加密算法</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/逆向/">逆向</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/tasks/" style="font-size: 20px;">tasks</a> <a href="/tags/%E7%AE%80%E4%BB%8B/" style="font-size: 10px;">简介</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(2);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/09/18/algorithm/tea/">TEA</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/18/algorithm/aes/">AES</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/18/algorithm/des/">DES</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/18/algorithm/md5/">MD5</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/17/reverse/tasks/task0_day3/">task0_day3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Em_Lin
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
+
+<!--这里可以自行更改    
+<br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
+<img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a>
+-->    
+
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="task0_day2" loading="lazy">
+            <h1>task0_day2</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2024年09月14日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E9%80%86%E5%90%91/">逆向</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p>继续学习</p>
+<h1 id="学习内容"><a href="#学习内容" class="headerlink" title="学习内容"></a>学习内容</h1><h2 id="一、B站视频6-8：（视频讲解前试着逆）"><a href="#一、B站视频6-8：（视频讲解前试着逆）" class="headerlink" title="一、B站视频6~8：（视频讲解前试着逆）"></a>一、B站视频6~8：（视频讲解前试着逆）</h2><p>3个课件都做了一遍，下面附上写的脚本（c语言）：</p>
+<h3 id="课件6"><a href="#课件6" class="headerlink" title="课件6"></a>课件6</h3><p>课件6相对比较简单，要不就是按照伪c直接正向写出，要不就用动态调试查看字符串信息（下面给出了动调的图片）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> flag[] = &#123;<span class="string">&quot;Go`nz_ixrbXRfoJ~EDG|NbL@rh\x8c&quot;</span>&#125;;<span class="comment">//Flag&#123;This_IS_T7_DEBUG_EASY&#125;</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">strlen</span>(flag);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		flag[i] = ((i+<span class="number">1</span>)^flag[i])-i;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,flag);	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://c.img.dasctf.com/LightPicture/2024/09/87b02188c9b1f669.png" alt="87b02188c9b1f669.png" data-caption="87b02188c9b1f669.png" loading="lazy"></p>
+<h3 id="课件7"><a href="#课件7" class="headerlink" title="课件7"></a>课件7</h3><p>这个课件是直接动调得出的结果。</p>
+<p>程序在打印欢迎前有检测，所以让程序自行运行到打印欢迎前从而绕过检测，然后在此处附加调试。(视频解法)</p>
+<p>其实可以将检测的代码全都nop掉也可以绕过。</p>
+<p>按照视频讲解思路，由于这是流加密，所以加解密过程一致，即：f（m）= n，f（n）= m</p>
+<p>所以只需要修改输入的内存值就可以直接得到flag</p>
+<p>以下是结果图：<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://c.img.dasctf.com/LightPicture/2024/09/e20c175acb87ebb6.png" alt="e20c175acb87ebb6.png" data-caption="e20c175acb87ebb6.png" loading="lazy"></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://c.img.dasctf.com/LightPicture/2024/09/19541dfec7e9bd4c.png" alt="19541dfec7e9bd4c.png" data-caption="19541dfec7e9bd4c.png" loading="lazy"></p>
+<h3 id="课件8"><a href="#课件8" class="headerlink" title="课件8"></a>课件8</h3><p>课件8这一节主要是对ida反编译的函数进行调整修复成我们熟知的模样。<br>视频已经讲解得很好了，我这里只是作一个记录，主要针对第二次加密函数的参数修改。（本来还有个注意的地方就是CreateTimerQueueTimer函数，后面再做补充吧）<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://c.img.dasctf.com/LightPicture/2024/09/d57c3be77ea9b4d6.png" alt="d57c3be77ea9b4d6.png" data-caption="d57c3be77ea9b4d6.png" loading="lazy"><br>上图就是第二次加密函数未修改前的样子，然后再看一下修复后的样子<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://c.img.dasctf.com/LightPicture/2024/09/f257b7c7005fe0b2.png" alt="f257b7c7005fe0b2.png" data-caption="f257b7c7005fe0b2.png" loading="lazy"><br>为什么a1参数是int型指针，而a3是char型指针？因为a2被识别成字符指针后在while循环中该数组的值被传递给了a3指针指向数组，同时a3指向的数组的元素大小只有_BYTE（1字节），此时其实可以合理说明a3是一个char型指针。而a1所指向数组是一个_DWORD（2字/4字节）数组，同时a1又被ida识别成了int数组，这里其实可以试一下变成int型指针后，查看代码是否变成了熟知的样子，如果还原了，就说明是int型，如果不是（其实可能性不是很大）就可以试一下其它变量类型。</p>
+<p>然后函数修复后的样子大致就是如下图：<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://c.img.dasctf.com/LightPicture/2024/09/b6116b64ab4b1b9c.png" alt="b6116b64ab4b1b9c.png" data-caption="b6116b64ab4b1b9c.png" loading="lazy"><br>flag经过两层加密得到了一个字符串，所以只需要将被加密字符逆回去就能得到，下面直接给出解密脚本：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> encode_flag[] = &#123;<span class="string">&quot;23gjf13au98hk3a1090zp8qjs41h39jp&quot;</span>&#125;;</span><br><span class="line">	<span class="keyword">char</span> key[] = &#123;<span class="number">0x4</span>, <span class="number">0x0F</span>, <span class="number">0x0B</span>, <span class="number">0x1E</span>, <span class="number">0x0E</span>, <span class="number">0x14</span>, <span class="number">0x1F</span>, <span class="number">0x9</span>, <span class="number">0x17</span>, <span class="number">0x2</span>, <span class="number">0x19</span>, <span class="number">0x1C</span>, <span class="number">0x12</span>, <span class="number">0x10</span>, <span class="number">0</span>, <span class="number">8</span>,</span><br><span class="line">	<span class="number">0x11</span>, <span class="number">1</span>, <span class="number">0x15</span>, <span class="number">3</span>, <span class="number">0x0A</span>, <span class="number">0x1D</span>, <span class="number">0x0C</span>, <span class="number">0x16</span>, <span class="number">0x18</span>, <span class="number">0x0D</span>, <span class="number">0x1B</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">0x13</span>, <span class="number">0x1A</span>&#125;;</span><br><span class="line">	<span class="keyword">char</span> str1[<span class="number">52</span>];</span><br><span class="line">	<span class="keyword">char</span> key2[] = &#123;<span class="number">0x53</span>,<span class="number">0x45</span>,<span class="number">0x5C</span>,<span class="number">0x1E</span>,<span class="number">0x50</span>,<span class="number">0x13</span>,<span class="number">0x2F</span>,<span class="number">0x78</span>,<span class="number">4</span>,<span class="number">0x53</span>,<span class="number">0x58</span>,<span class="number">0x4A</span>,<span class="number">0x43</span>,<span class="number">1</span>,<span class="number">0x41</span>,<span class="number">0x2A</span>,<span class="number">8</span>,<span class="number">0x40</span>,<span class="number">0x67</span>,<span class="number">0x2F</span>,<span class="number">0x0C</span>,<span class="number">0x4A</span>,</span><br><span class="line">	<span class="number">0x12</span>,<span class="number">0x2E</span>,<span class="number">0x41</span>,<span class="number">0x6C</span>,<span class="number">5</span>,<span class="number">0x54</span>,<span class="number">0x40</span>,<span class="number">0x12</span>,<span class="number">0x5B</span>,<span class="number">0x4F</span>&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">char</span> flag[<span class="number">52</span>];</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> len = <span class="built_in">strlen</span>(encode_flag);</span><br><span class="line">	<span class="keyword">while</span>(i&lt;len)</span><br><span class="line">	&#123;</span><br><span class="line">		str1[i]=encode_flag[key[i]];</span><br><span class="line">		flag[i]=str1[i]^key2[i];</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,flag);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Em_Lin<br>
+        <strong>本文链接：</strong><a href="http://ermu0.github.io/2024/09/14/reverse/tasks/task0_day2/" title="http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;14&#x2F;reverse&#x2F;tasks&#x2F;task0_day2&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;14&#x2F;reverse&#x2F;tasks&#x2F;task0_day2&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/tasks/" rel="tag">tasks</a>
+    
+</div>
+  
+  
+
+  
+      <div class="nexmoe-post-footer">
+          <script src="https://giscus.app/client.js"
+    data-repo="nexmoe/nexmoe.com"
+    data-repo-id="R_kgDOJI1XUA"
+    data-category="General"
+    data-category-id="DIC_kwDOJI1XUM4CU1nn"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="en"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
+
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">学习内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81B%E7%AB%99%E8%A7%86%E9%A2%916-8%EF%BC%9A%EF%BC%88%E8%A7%86%E9%A2%91%E8%AE%B2%E8%A7%A3%E5%89%8D%E8%AF%95%E7%9D%80%E9%80%86%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">一、B站视频6~8：（视频讲解前试着逆）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E4%BB%B66"><span class="toc-number">1.1.1.</span> <span class="toc-text">课件6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E4%BB%B67"><span class="toc-number">1.1.2.</span> <span class="toc-text">课件7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E4%BB%B68"><span class="toc-number">1.1.3.</span> <span class="toc-text">课件8</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="搜索" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script src='https://sentry.mixcm.com/js-sdk-loader/affb515ef7b517cb3fc0dc63d65a9fc2.min.js' crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>

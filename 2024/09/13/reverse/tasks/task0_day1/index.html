@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>task0_day1 - Em_Lin</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" type="image/png" />
+<meta name="description" content="因为有其它任务安排，只能抽时间完成部分任务（主要是自己菜） 学习内容一、B站视频1~5：（视频讲解前逆）5个课件都做了一遍，下面附上写的脚本（c语言）： 课件1课件1可以直接在IDA（32位）中查看flag 课件2课件2将字符ascii码自减1就可以得回flag 1234567891011121314#include &lt;stdio.h&gt;#include &lt;string.h&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="task0_day1">
+<meta property="og:url" content="http://ermu0.github.io/2024/09/13/reverse/tasks/task0_day1/index.html">
+<meta property="og:site_name" content="Em_Lin">
+<meta property="og:description" content="因为有其它任务安排，只能抽时间完成部分任务（主要是自己菜） 学习内容一、B站视频1~5：（视频讲解前逆）5个课件都做了一遍，下面附上写的脚本（c语言）： 课件1课件1可以直接在IDA（32位）中查看flag 课件2课件2将字符ascii码自减1就可以得回flag 1234567891011121314#include &lt;stdio.h&gt;#include &lt;string.h&gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://c.img.dasctf.com/LightPicture/2024/09/11cb70986223ab01.png">
+<meta property="og:image" content="https://c.img.dasctf.com/LightPicture/2024/09/9a7a0015ea2e47c6.png">
+<meta property="article:published_time" content="2024-09-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-12T16:00:00.000Z">
+<meta property="article:author" content="Em_Lin">
+<meta property="article:tag" content="tasks">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://c.img.dasctf.com/LightPicture/2024/09/11cb70986223ab01.png">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1726666381072">
+
+<link rel="stylesheet" href="/css/style.css?v=1726666381072">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1726666381072">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1726666381072"></script>
+
+ 
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+
+  gtag("config", "G-4D4ZJ9G024");
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 5.4.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Em_Lin"><img src="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" alt="Em_Lin"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Em_Lin">
+            <img src="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" alt="Em_Lin" alt="Em_Lin">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>10</div>
+        <div><span>标签</span>2</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://nexmoe.com/3145B9F.html"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/628727362"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/ermu0/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://nexmoe.com/atom.xml"
+			target="_blank"
+			mdui-tooltip="{content: 'RSS'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/加密算法/">加密算法</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/逆向/">逆向</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/tasks/" style="font-size: 20px;">tasks</a> <a href="/tags/%E7%AE%80%E4%BB%8B/" style="font-size: 10px;">简介</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(2);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/09/18/algorithm/tea/">TEA</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/18/algorithm/aes/">AES</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/18/algorithm/des/">DES</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/18/algorithm/md5/">MD5</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/17/reverse/tasks/task0_day3/">task0_day3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Em_Lin
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
+
+<!--这里可以自行更改    
+<br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
+<img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a>
+-->    
+
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="task0_day1" loading="lazy">
+            <h1>task0_day1</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2024年09月13日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E9%80%86%E5%90%91/">逆向</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p>因为有其它任务安排，只能抽时间完成部分任务（主要是自己菜）</p>
+<h1 id="学习内容"><a href="#学习内容" class="headerlink" title="学习内容"></a>学习内容</h1><h2 id="一、B站视频1-5：（视频讲解前逆）"><a href="#一、B站视频1-5：（视频讲解前逆）" class="headerlink" title="一、B站视频1~5：（视频讲解前逆）"></a>一、B站视频1~5：（视频讲解前逆）</h2><p>5个课件都做了一遍，下面附上写的脚本（c语言）：</p>
+<h3 id="课件1"><a href="#课件1" class="headerlink" title="课件1"></a>课件1</h3><p>课件1可以直接在IDA（32位）中查看flag</p>
+<h3 id="课件2"><a href="#课件2" class="headerlink" title="课件2"></a>课件2</h3><p>课件2将字符ascii码自减1就可以得回flag</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">char</span> encode_flag[] = &#123;<span class="string">&quot;gmbh|ZPV`GJOE`JU`IBIB~&quot;</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="built_in">strlen</span>(encode_flag);i++)&#123;</span><br><span class="line">        --encode_flag[i];<span class="comment">//每一个字符作自减操作(将自身的ascii码自减) </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>,encode_flag[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,encode_flag);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="课件3"><a href="#课件3" class="headerlink" title="课件3"></a>课件3</h3><p>课件3将字符则是采用了异或（A^C=B B^C=A）的原理，所以逆异或就可以得到flag</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//char encode_flag[] = &#123;0x66,0x6d,0x63,0x64,0x7f,0x5c,0x49,0x52,0x57,0x4f,0x43,0x45,0x48,0x52,0x47,0x5b,0x4f,0x59,0x53,0x5b,0x55,0x68&#125;;</span></span><br><span class="line">    <span class="keyword">char</span> encode_flag[] = &#123;<span class="string">&quot;fmcd\x7f\\IRWOCEHRG[OYS[Uh&quot;</span>&#125;;<span class="comment">//这里不是空格，是0x7f只不过ascii码没法转换（我最开始就是以为是空格，结果flag转换成$美元符） </span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">strlen</span>(encode_flag); i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%c &quot;</span>, encode_flag[i]);<span class="comment">//和未异或前进行对比 </span></span><br><span class="line">        encode_flag[i] ^= i;<span class="comment">//再次进行异或以解码</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, encode_flag[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, encode_flag);    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="课件4"><a href="#课件4" class="headerlink" title="课件4"></a>课件4</h3><p>课件4则是在课件3异或的基础上采用了base64加密，所以先进行base64解密再逆异或可得到flag，我用的是在线<a target="_blank" rel="noopener" href="https://www.toolhelper.cn/EncodeDecode/Base64">base64解密</a>，解密后得到的字符串再用课件3脚本就可以得到</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://c.img.dasctf.com/LightPicture/2024/09/11cb70986223ab01.png" alt="11cb70986223ab01.png" data-caption="11cb70986223ab01.png" loading="lazy"></p>
+<h3 id="课件5"><a href="#课件5" class="headerlink" title="课件5"></a>课件5</h3><p>课件5是在课件4基础上采用了换表的base64加密，我是直接采用了base64换表脚本再逆异或得到。</p>
+<p>当然视频中讲解的先将异表加密得到的字符串换成对应的原表字符，然后再用原表解密逆异或也可以得到，最后在代码后附上换表解密结果的图片。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="comment">//ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> base64char[] = &#123;<span class="string">&quot;ZYXABCDEFGHIJKLMNOPQRSTUVWzyxabcdefghijklmnopqrstuvw0123456789+/&quot;</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//待解密的数据 </span></span><br><span class="line">    <span class="keyword">char</span> Str1[<span class="number">1024</span>]=&#123;<span class="string">&quot;Wj1gWE9xPSGUQ0KCPCGET09WR1qSzZ==&quot;</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> base64Strlen1 = <span class="built_in">strlen</span>(Str1);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span>* result1 = (<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>) * <span class="number">1024</span>);</span><br><span class="line">    <span class="built_in">memset</span>(result1, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">char</span>) * <span class="number">1024</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,base64_decode((<span class="keyword">char</span> <span class="keyword">const</span>*)Str1, result1, base64Strlen1));</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">base64_decode</span><span class="params">(<span class="keyword">char</span> <span class="keyword">const</span>* base64Str, <span class="keyword">char</span>* debase64Str, <span class="keyword">int</span> encodeStrlen)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> temp[<span class="number">4</span>]=<span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; encodeStrlen; i += <span class="number">4</span>)&#123;<span class="comment">//每4个base64字符为一组进行解密操作 </span></span><br><span class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; <span class="number">64</span>; j++)&#123;<span class="comment">//从加密字符中匹配对应的base64表字符索引</span></span><br><span class="line">			<span class="keyword">if</span>(*(base64Str+i) == base64char[j])&#123; </span><br><span class="line">				temp[<span class="number">0</span>] = j;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; <span class="number">64</span>; j++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(*(base64Str+i+<span class="number">1</span>) == base64char[j])&#123;</span><br><span class="line">			temp[<span class="number">1</span>] = j;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; <span class="number">64</span>; j++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(*(base64Str+i+<span class="number">2</span>) == base64char[j])&#123;</span><br><span class="line">			temp[<span class="number">2</span>] = j;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; <span class="number">64</span>; j++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(*(base64Str+i+<span class="number">3</span>) == base64char[j])&#123;</span><br><span class="line">			temp[<span class="number">3</span>] = j;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//第一个Ascii字符 = 第一个base64字符的前6位 + 第二个base64字符的前2位 </span></span><br><span class="line">	*(debase64Str + k++) = ((temp[<span class="number">0</span>]&lt;&lt;<span class="number">2</span>) &amp; <span class="number">0XFC</span>) | (((temp[<span class="number">1</span>]&gt;&gt;<span class="number">4</span>) &amp; <span class="number">0x03</span>));<span class="comment">//第一个ascii字符组装结束，共8位 </span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*假设只有1个Ascii字符加密，最后也会有四位base64字符（最后两位为&quot;=&quot;），所以判断第三位是否为&quot;=&quot;就行。</span></span><br><span class="line"><span class="comment">	因为第三位base64字符如果就是&quot;=&quot;，就必然说明这一组Ascii字符就只有一个（即只有8位，解密结束）。 </span></span><br><span class="line"><span class="comment">	*/</span> </span><br><span class="line">	<span class="keyword">if</span> (*(base64Str + i + <span class="number">2</span>) == <span class="string">&#x27;=&#x27;</span>)<span class="comment">//其实这里的判断可以去掉，然后在第三个字符结尾处加一个判断 </span></span><br><span class="line">           <span class="keyword">break</span>; </span><br><span class="line">           </span><br><span class="line">	<span class="comment">//第二个字符 = 第二个base64字符的后4位 + 第三个字符的前4位 </span></span><br><span class="line">	*(debase64Str + k++) = ((temp[<span class="number">1</span>]&lt;&lt;<span class="number">4</span>) &amp; <span class="number">0xF0</span>) | (((temp[<span class="number">2</span>]&gt;&gt;<span class="number">2</span>) &amp; <span class="number">0x0F</span>));<span class="comment">//第二个ascii字符组装结束，共16位 </span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//理由与第一处判断差不多，如果只有两个Ascii字符，那么它的第四个base64字符就是&quot;=&quot;（所以只有16位，解密结束） </span></span><br><span class="line">	<span class="keyword">if</span> (*(base64Str + i + <span class="number">3</span>) == <span class="string">&#x27;=&#x27;</span>)<span class="comment">//其实这里的判断理论上可以改为 每三个字符的第二个字符+i+1 </span></span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">           </span><br><span class="line">	<span class="comment">//第三个字符 </span></span><br><span class="line">	<span class="comment">//这里没啥好说的，前两个判断都过滤掉，说明了这一组（4个base64字符）的原文必然有三个ascii字符，共24位 </span></span><br><span class="line">	*(debase64Str + k++) = ((temp[<span class="number">2</span>]&lt;&lt;<span class="number">6</span>)) | ((temp[<span class="number">3</span>]) &amp; <span class="number">0x3f</span>);<span class="comment">//第三个ascii字符组装结束，共24位 </span></span><br><span class="line">&#125;</span><br><span class="line">	<span class="keyword">return</span> debase64Str;</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://c.img.dasctf.com/LightPicture/2024/09/9a7a0015ea2e47c6.png" alt="9a7a0015ea2e47c6.png" data-caption="9a7a0015ea2e47c6.png" loading="lazy"></p>
+<h2 id="二、Base64加密原理的实现（C语言）以及RSA加解密原理的实现（Python）"><a href="#二、Base64加密原理的实现（C语言）以及RSA加解密原理的实现（Python）" class="headerlink" title="二、Base64加密原理的实现（C语言）以及RSA加解密原理的实现（Python）"></a>二、Base64加密原理的实现（C语言）以及RSA加解密原理的实现（Python）</h2><h3 id="1、base64加密c实现代码："><a href="#1、base64加密c实现代码：" class="headerlink" title="1、base64加密c实现代码："></a>1、base64加密c实现代码：</h3><p>base64加密原理：</p>
+<p>假设有三个char型共3*8bit=24bit的字符串，base64加密就需要将其分割成4*6bit的组合，即每6bit一组，然后重新计算组合的这6bit值(6bit前补0当作8bit求)，使其变成base64表中的索引值，从而获取对应表中的字符，以达到加密的目的。</p>
+<p>注意：</p>
+<p>1.其中需要注意的是base64的索引表中只有64个可打印字符，即：“ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/”，而符号“=”是作为补充符出现。</p>
+<p>2.base64加密严格按照4*6为一组，所以即使有位数不够的情况也要补0，如果有6bit组全为0则当作“=”符号。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">       </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="keyword">char</span> base64char[] = &#123;<span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//待解密的数据 </span></span><br><span class="line">    <span class="keyword">char</span> encodeStr1[<span class="number">1024</span>]=&#123;<span class="string">&quot;Man&quot;</span>&#125;;<span class="comment">//mTyqm7wjODkrNLcWl0eqO8K8gc1BPk1GNLgUpI== //MTA&amp;NTA&amp;Nj@*Mw==</span></span><br><span class="line">    <span class="keyword">int</span> base64Strlen1 = <span class="built_in">strlen</span>(encodeStr1);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span>* result1 = (<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>) * <span class="number">1024</span>);</span><br><span class="line">    <span class="built_in">memset</span>(result1, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">char</span>) * <span class="number">1024</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,base64_encode((<span class="keyword">char</span> <span class="keyword">const</span>*)encodeStr1, result1, base64Strlen1));</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*base64_encode(base64加密) </span></span><br><span class="line"><span class="comment">    parm：</span></span><br><span class="line"><span class="comment">        binData：待加密数据</span></span><br><span class="line"><span class="comment">        base64：加密后数据</span></span><br><span class="line"><span class="comment">        binLength：待加密数据长度 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">base64_encode</span><span class="params">(<span class="keyword">char</span>* binData, <span class="keyword">char</span>* base64, <span class="keyword">int</span> binLength)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> current = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; binLength; i += <span class="number">3</span>) &#123;<span class="comment">//每三个char(char：1byte)为一组 </span></span><br><span class="line">        current = (*(binData + i) &gt;&gt; <span class="number">2</span>) &amp; <span class="number">0x3F</span>;<span class="comment">//将字符ascii二进制右移两位同时&amp;3f保证是取前6位 </span></span><br><span class="line">        *(base64 + j++) = base64char[current];<span class="comment">//将移位后形成的数作为base64表的索引（j++是先赋值再自加） </span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//获取第二个6位的前两位</span></span><br><span class="line">        <span class="comment">//current = (*(binData + i)&lt;&lt;6) &amp; 0xc0; </span></span><br><span class="line">        current = (*(binData + i) &lt;&lt; <span class="number">4</span>) &amp; <span class="number">0x30</span>;<span class="comment">//将第一个字符二进制左移4位，取得后4位后，再与00110000相与，从而获得最后2位 </span></span><br><span class="line">        </span><br><span class="line">    <span class="comment">//如果只有一个字符，那么需要做特殊处理(因为只有一个字符时，只能支撑base64加密到第二个6位，所以&quot;=&quot;判断得在这里进行) </span></span><br><span class="line">        <span class="keyword">if</span> (binLength &lt;= (i + <span class="number">1</span>)) &#123;</span><br><span class="line">            *(base64 + j++) = base64char[current];</span><br><span class="line">            *(base64 + j++) = <span class="string">&#x27;=&#x27;</span>;</span><br><span class="line">            *(base64 + j++) = <span class="string">&#x27;=&#x27;</span>;</span><br><span class="line">            <span class="keyword">break</span>;<span class="comment">//一个字符补充完&quot;=&quot;后退出 </span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//获取第二个6位的后四位</span></span><br><span class="line">        current |= (*(binData + i + <span class="number">1</span>) &gt;&gt; <span class="number">4</span>) &amp; <span class="number">0xf</span>;<span class="comment">//保留第二个字节的前四位，通过或将前一个字节的后2位进行拼接 </span></span><br><span class="line">        *(base64 + j++) = base64char[current];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//获取第三个6位的前四位</span></span><br><span class="line">        current = (*(binData + i + <span class="number">1</span>) &lt;&lt; <span class="number">2</span>) &amp; <span class="number">0x3c</span>;<span class="comment">//第二个字节的后四位 </span></span><br><span class="line">        </span><br><span class="line">    <span class="comment">//如果只有2个字符，那么最后6位一定为0，所以在这里需要作&quot;=&quot;判断 </span></span><br><span class="line">        <span class="keyword">if</span> (binLength &lt;= (i + <span class="number">2</span>)) &#123;</span><br><span class="line">            *(base64 + j++) = base64char[current];</span><br><span class="line">            *(base64 + j++) = <span class="string">&#x27;=&#x27;</span>;</span><br><span class="line">            <span class="keyword">break</span>;<span class="comment">//2个字符补充完&quot;=&quot;后退出 </span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">  <span class="comment">//如果有3个字符 </span></span><br><span class="line">        <span class="comment">//获取第三个6位的后两位</span></span><br><span class="line">        current |= (*(binData + i + <span class="number">2</span>) &gt;&gt; <span class="number">6</span>) &amp; <span class="number">0x03</span>;<span class="comment">//第三个字节的前两位与前一个字节的后4位拼接 </span></span><br><span class="line">        *(base64 + j++) = base64char[current];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//获取第四个6位</span></span><br><span class="line">        current = *(binData + i + <span class="number">2</span>) &amp; <span class="number">0x3F</span>;<span class="comment">//第三个字节的后6位自成一组 </span></span><br><span class="line">        *(base64 + j++) = base64char[current];</span><br><span class="line">    &#125;</span><br><span class="line">    *(base64 + j) = <span class="string">&#x27;\0&#x27;</span>;<span class="comment">//给字符串结尾添加结束符 </span></span><br><span class="line">    <span class="keyword">return</span> base64;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、RSA加解密原理python实现："><a href="#2、RSA加解密原理python实现：" class="headerlink" title="2、RSA加解密原理python实现："></a>2、RSA加解密原理python实现：</h3><p>RSA加解密原理：</p>
+<p>先取两个大质数（2、3、5、7…这一类只能被1和自身相除的数）p和q，然后计算欧拉函数φ(N)=(p-1)(q-1)；<br>接着在1~φ(N)之间选取一个整数e，计算e关于φ(N)的模反元素d，即：e*d mod φ(N) = 1；<br>最后封装成公钥（e,n）和（d,n），其中n为p、q两值得乘积。</p>
+<p>加密：<br>c = (m ^ e) mod n</p>
+<p>解密：<br>m = (c ^ d) mod n</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#RSA</span></span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Cryptodome.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="comment">#公钥</span></span><br><span class="line">key = [<span class="number">19</span>, <span class="number">47</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#由公钥可以得出私钥</span></span><br><span class="line">n = key[<span class="number">0</span>]*key[<span class="number">1</span>]<span class="comment">#893</span></span><br><span class="line">fn = (key[<span class="number">0</span>]-<span class="number">1</span>)*(key[<span class="number">1</span>]-<span class="number">1</span>)<span class="comment">#828</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#私钥就是e与fn的逆元</span></span><br><span class="line"><span class="comment">##这里的逆元可以直接用python库得出</span></span><br><span class="line"><span class="comment">##然后我这里也写出了扩展欧几里得算法求逆元的实现</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    <span class="keyword">while</span> a != <span class="number">0</span>:</span><br><span class="line">        a, b = b % a, a</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exgcd</span>(<span class="params">a, m</span>):</span></span><br><span class="line">    <span class="keyword">if</span> gcd(a, m) != <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    u1,u2,u3 = <span class="number">1</span>, <span class="number">0</span>, a</span><br><span class="line">    v1,v2,v3 = <span class="number">0</span>, <span class="number">1</span>, m</span><br><span class="line">    <span class="keyword">while</span> v3 != <span class="number">0</span>:</span><br><span class="line">        q = u3 // v3<span class="comment">#地板除</span></span><br><span class="line">        v1, v2, v3, u1, u2, u3 = (u1 - q * v1), (u2 - q * v2), (u3 - q * v3), v1, v2, v3</span><br><span class="line">    <span class="keyword">return</span> u1 % m</span><br><span class="line"></span><br><span class="line"><span class="comment">##这个是直接用库得出的私钥</span></span><br><span class="line">private_key = [<span class="number">19</span>,<span class="number">47</span>,gmpy2.invert(key[<span class="number">2</span>],fn)]</span><br><span class="line"></span><br><span class="line"><span class="comment">#RSA加密</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rsa_encrypt</span>(<span class="params">msg,key</span>):</span></span><br><span class="line">    <span class="comment">#这里的msg是直接转十六进制后再调用bytes_to_long函数转化后的数据</span></span><br><span class="line">    n = key[<span class="number">0</span>]*key[<span class="number">1</span>]</span><br><span class="line">    <span class="comment">#这里就是加密后的数据</span></span><br><span class="line">    en_msg = <span class="built_in">pow</span>(msg,key[<span class="number">2</span>],n)</span><br><span class="line">    <span class="keyword">return</span> en_msg</span><br><span class="line"></span><br><span class="line"><span class="comment">#RSA解密</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rsa_decrypt</span>(<span class="params">en_msg,private_key</span>):</span></span><br><span class="line">    n = private_key[<span class="number">0</span>]*private_key[<span class="number">1</span>]</span><br><span class="line">    msg = <span class="built_in">pow</span>(en_msg,private_key[<span class="number">2</span>],n)</span><br><span class="line">    <span class="keyword">return</span> msg</span><br><span class="line"></span><br><span class="line"><span class="comment">##准备工作</span></span><br><span class="line">msg = <span class="built_in">input</span>(<span class="string">&#x27;请输入加密的字符串：&#x27;</span>)</span><br><span class="line">_en_msg = msg.encode(<span class="string">&#x27;ascii&#x27;</span>)<span class="comment">#这里采用字节码，如果用字节去转化长整型有点麻烦</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#加密</span></span><br><span class="line">encode = []</span><br><span class="line">enstr = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="built_in">len</span>(_en_msg)):</span><br><span class="line">    encode.append(rsa_encrypt(_en_msg[i],key))</span><br><span class="line">    enstr+=<span class="built_in">str</span>(encode[i])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;加密结果为：&#x27;</span>+enstr)</span><br><span class="line"></span><br><span class="line"><span class="comment">#解密(发现只能一个字符一个字符解出，没办法直接整体解出)</span></span><br><span class="line">decode = []</span><br><span class="line">_msg = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="built_in">len</span>(encode)):</span><br><span class="line">    decode.append(rsa_decrypt(encode[i],private_key))</span><br><span class="line">    _msg.append(<span class="built_in">chr</span>(decode[i]))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;解密结果为：&#x27;</span>+<span class="string">&#x27;&#x27;</span>.join(_msg))</span><br></pre></td></tr></table></figure>
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Em_Lin<br>
+        <strong>本文链接：</strong><a href="http://ermu0.github.io/2024/09/13/reverse/tasks/task0_day1/" title="http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;13&#x2F;reverse&#x2F;tasks&#x2F;task0_day1&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;13&#x2F;reverse&#x2F;tasks&#x2F;task0_day1&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/tasks/" rel="tag">tasks</a>
+    
+</div>
+  
+  
+
+  
+      <div class="nexmoe-post-footer">
+          <script src="https://giscus.app/client.js"
+    data-repo="nexmoe/nexmoe.com"
+    data-repo-id="R_kgDOJI1XUA"
+    data-category="General"
+    data-category-id="DIC_kwDOJI1XUM4CU1nn"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="en"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
+
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">学习内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81B%E7%AB%99%E8%A7%86%E9%A2%911-5%EF%BC%9A%EF%BC%88%E8%A7%86%E9%A2%91%E8%AE%B2%E8%A7%A3%E5%89%8D%E9%80%86%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">一、B站视频1~5：（视频讲解前逆）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E4%BB%B61"><span class="toc-number">1.1.1.</span> <span class="toc-text">课件1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E4%BB%B62"><span class="toc-number">1.1.2.</span> <span class="toc-text">课件2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E4%BB%B63"><span class="toc-number">1.1.3.</span> <span class="toc-text">课件3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E4%BB%B64"><span class="toc-number">1.1.4.</span> <span class="toc-text">课件4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E4%BB%B65"><span class="toc-number">1.1.5.</span> <span class="toc-text">课件5</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Base64%E5%8A%A0%E5%AF%86%E5%8E%9F%E7%90%86%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89%E4%BB%A5%E5%8F%8ARSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%8E%9F%E7%90%86%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88Python%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">二、Base64加密原理的实现（C语言）以及RSA加解密原理的实现（Python）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81base64%E5%8A%A0%E5%AF%86c%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、base64加密c实现代码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%8E%9F%E7%90%86python%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、RSA加解密原理python实现：</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="搜索" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script src='https://sentry.mixcm.com/js-sdk-loader/affb515ef7b517cb3fc0dc63d65a9fc2.min.js' crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>

@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>SHA-1与SHA-256 - Em_Lin</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" type="image/png" />
+<meta name="description" content="这一篇主要包含SHA-1与SHA-256的基本原理以及加密过程，同时也会对两者进行一个对比。 SHA-1SHA-1会接收任意长度的输入数据，并将其转换为固定长度的160位（20字节）哈希值。 原理1 消息填充 SHA-1 要处理的消息长度必须是512位（64字节）的倍数，因此消息首先要进行填充。填充过程包括在消息的末尾加一个1比特，然后填充足够的0比特，直到消息的长度比512少64位（即满足512">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SHA-1与SHA-256">
+<meta property="og:url" content="http://ermu0.github.io/2024/09/17/algorithm/sha1_sha256/index.html">
+<meta property="og:site_name" content="Em_Lin">
+<meta property="og:description" content="这一篇主要包含SHA-1与SHA-256的基本原理以及加密过程，同时也会对两者进行一个对比。 SHA-1SHA-1会接收任意长度的输入数据，并将其转换为固定长度的160位（20字节）哈希值。 原理1 消息填充 SHA-1 要处理的消息长度必须是512位（64字节）的倍数，因此消息首先要进行填充。填充过程包括在消息的末尾加一个1比特，然后填充足够的0比特，直到消息的长度比512少64位（即满足512">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-16T16:00:00.000Z">
+<meta property="article:author" content="Em_Lin">
+<meta property="article:tag" content="tasks">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1726666381054">
+
+<link rel="stylesheet" href="/css/style.css?v=1726666381054">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1726666381054">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1726666381054"></script>
+
+ 
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+
+  gtag("config", "G-4D4ZJ9G024");
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 5.4.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Em_Lin"><img src="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" alt="Em_Lin"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Em_Lin">
+            <img src="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" alt="Em_Lin" alt="Em_Lin">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>10</div>
+        <div><span>标签</span>2</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://nexmoe.com/3145B9F.html"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/628727362"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/ermu0/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://nexmoe.com/atom.xml"
+			target="_blank"
+			mdui-tooltip="{content: 'RSS'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/加密算法/">加密算法</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/逆向/">逆向</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/tasks/" style="font-size: 20px;">tasks</a> <a href="/tags/%E7%AE%80%E4%BB%8B/" style="font-size: 10px;">简介</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(2);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/09/18/algorithm/tea/">TEA</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/18/algorithm/aes/">AES</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/18/algorithm/des/">DES</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/18/algorithm/md5/">MD5</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/17/reverse/tasks/task0_day3/">task0_day3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Em_Lin
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
+
+<!--这里可以自行更改    
+<br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
+<img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a>
+-->    
+
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="SHA-1与SHA-256" loading="lazy">
+            <h1>SHA-1与SHA-256</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2024年09月17日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p>这一篇主要包含SHA-1与SHA-256的基本原理以及加密过程，同时也会对两者进行一个对比。</p>
+<h1 id="SHA-1"><a href="#SHA-1" class="headerlink" title="SHA-1"></a>SHA-1</h1><p>SHA-1会接收任意长度的输入数据，并将其转换为固定长度的160位（20字节）哈希值。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="1-消息填充"><a href="#1-消息填充" class="headerlink" title="1 消息填充"></a>1 消息填充</h3><p style="text-indent: 2em;">
+SHA-1 要处理的消息长度必须是512位（64字节）的倍数，因此消息首先要进行填充。填充过程包括在消息的末尾加一个1比特，然后填充足够的0比特，直到消息的长度比512少64位（即满足512位块的需求）。最后，消息的最后64位用于存储原始消息的长度。
+</p>
+
+<p style="text-indent: 2em;">
+上面的说法可能有点苍白，这里举个例子，假设我们要加密的信息是" abc "：
+</p>
+
+<p style="text-indent: 2em;">第一步：先将字符按照字节处理
+"a" -> 0x61；"b" -> 0x62；"c" -> 0x63
+
+<p>因此”abc”这个字符串的字节表示为：</p>
+<p style="text-indent: 2em;">0x61 0x62 0x63（共3个字节）
+
+<p style="text-indent: 2em;">第二步：往0x61 0x62 0x63后面添加1bit，也就是0x61 0x62 0x63 1，但是sha是按字节处理所以在1的后面还要填充7个0，也就是10000000，变化成字节也就是0x80
+
+<p>因此第二部结束后字符串被处理成了：</p>
+<p style="text-indent: 2em;">0x61 0x62 0x63 0x80（共4个字节）
+
+<p style="text-indent: 2em;">第三步：继续填充0，直到有56个字节（448位）为止，因为剩下的16个字节（64位）要作为明文的长度表示，
+所以第三步结束后字符串被处理成了：
+    
+<p>0x61 0x62 0x63 0x80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</p>
+<p style="text-indent: 2em;">第四步：由于明文是3个字节，即24位，所以它的长度就是24，用字节表示就是0x18，
+所以第四步结束后，字符串最终被处理成了：
+
+<p>0x61 0x62 0x63 0x80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 18</p>
+<h3 id="2-消息分块"><a href="#2-消息分块" class="headerlink" title="2 消息分块"></a>2 消息分块</h3><p style="text-indent: 2em;">
+填充后的消息被分成多个512位的块，每个块被单独处理。对于每个512位的块，SHA-1 会将其分为16个32位的子块。
+</p>
+
+<h3 id="3-初始哈希"><a href="#3-初始哈希" class="headerlink" title="3 初始哈希"></a>3 初始哈希</h3><p style="text-indent: 2em;">
+SHA-1 使用5个32位的初始常量哈希值，这些值分别被称为H0、H1、H2、H3、H4，并具有如下的初始值：
+</p>
+
+<p style="text-indent: 2em;">    H0 = 0x67452301
+     
+<p style="text-indent: 2em;">    H1 = 0xEFCDAB89 
+    
+<p style="text-indent: 2em;">    H2 = 0x98BADCFE 
+    
+<p style="text-indent: 2em;">    H3 = 0x10325476 
+    
+<p style="text-indent: 2em;">    H4 = 0xC3D2E1F0
+
+<h3 id="4-消息处理"><a href="#4-消息处理" class="headerlink" title="4 消息处理"></a>4 消息处理</h3><p style="text-indent: 2em;">
+对于每个512位的消息块，SHA-1 会使用一个特定的处理过程，包括消息扩展和80轮的循环运算。
+</p>
+
+<p style="text-indent: 2em;">
+消息扩展阶段：最初的16个32位的子块被扩展为80个32位的子块。
+</p>
+
+<p style="text-indent: 2em;">循环操作阶段：循环涉及到布尔函数、模加运算和移位操作，每轮操作会将当前的哈希值与扩展的子块进行复杂的计算。在每轮循环中，SHA-1 使用了4个固定的逻辑运算函数，这些函数根据循环的阶段变化：
+</p>
+
+<p style="text-indent: 2em;">
+    阶段 1 (0 ≤ t ≤ 19): f = (B AND C) OR ((NOT B) AND D)
+
+<p style="text-indent: 2em;">    
+    阶段 2 (20 ≤ t ≤ 39): f = B XOR C XOR D
+
+<p style="text-indent: 2em;">    
+    阶段 3 (40 ≤ t ≤ 59): f = (B AND C) OR (B AND D) OR (C AND D)
+
+<p style="text-indent: 2em;">    
+    阶段 4 (60 ≤ t ≤ 79): f = B XOR C XOR D
+
+
+<p style="text-indent: 2em;">
+每轮运算中，还会使用一个常量值（K），根据不同的阶段，K的值也不同：
+<p style="text-indent: 2em;">    
+    K = 0x5A827999 (0 ≤ t ≤ 19)
+
+<p style="text-indent: 2em;">    
+    K = 0x6ED9EBA1 (20 ≤ t ≤ 39)
+    
+<p style="text-indent: 2em;">    
+    K = 0x8F1BBCDC (40 ≤ t ≤ 59)
+    
+<p style="text-indent: 2em;">    
+    K = 0xCA62C1D6 (60 ≤ t ≤ 79)
+
+
+
+<p style="text-indent: 2em;">
+上面这里只是大概梳理了一下消息处理的过程（目的是为了有基础的了解），然后这里再详细解释一下。
+</p>
+
+<h3 id="4-1-消息扩展步骤"><a href="#4-1-消息扩展步骤" class="headerlink" title="4.1 消息扩展步骤"></a>4.1 消息扩展步骤</h3><h3 id="4-1-1-消息扩展"><a href="#4-1-1-消息扩展" class="headerlink" title="4.1.1 消息扩展"></a>4.1.1 消息扩展</h3><p style="text-indent: 2em;">
+明文被扩展到512位的倍数位，每个512位为一组进行加密处理。将每个512位的消息块分成16个32位的子块（标记为 W[0] 到 W[15]）。
+</p>
+<p style="text-indent: 2em;">
+然后，通过以下公式，将这16个子块扩展成80个32位的子块（标记为 W[16] 到 W[79]）：
+</p>
+
+<blockquote>
+<p>W[t]=(W[t−3]⊕W[t−8]⊕W[t−14]⊕W[t−16])≪1</p>
+</blockquote>
+<h3 id="4-1-2-初始化工作变量"><a href="#4-1-2-初始化工作变量" class="headerlink" title="4.1.2 初始化工作变量"></a>4.1.2 初始化工作变量</h3><p style="text-indent: 2em;">
+在处理每个512位消息块之前，将之前轮次的5个32位哈希值（H0 到 H4）赋值给5个工作变量：
+</p>
+
+<p style="text-indent: 2em;">    A = H0
+
+<p style="text-indent: 2em;">    B = H1
+
+<p style="text-indent: 2em;">    C = H2
+
+<p style="text-indent: 2em;">    D = H3
+
+<p style="text-indent: 2em;">    E = H4
+
+<h3 id="4-1-3-80轮主循环"><a href="#4-1-3-80轮主循环" class="headerlink" title="4.1.3 80轮主循环"></a>4.1.3 80轮主循环</h3><p style="text-indent: 2em;">
+对于每一个子块 W[t]，SHA-1 进行80轮的迭代运算。每一轮的操作包括以下步骤：
+<p style="text-indent: 2em;">
+计算临时变量 T：（这个T值会在后续的变量变换中有用）
+
+<blockquote>
+<p>T=(A≪5)+f(B,C,D)+E+W[t]+K[t]</p>
+</blockquote>
+<p>（其中f(B,C,D)就是上面说的当前轮次下的布尔函数，K就是上面说的当前轮次下的常量值）</p>
+<p style="text-indent: 2em;">计算出T值后进行变量更新，更新5个工作变量（A,B,C,D,E）：
+<p style="text-indent: 2em;">E = D
+<p style="text-indent: 2em;">D = C
+<p style="text-indent: 2em;">C = B << 30（将 B 左移30位）
+<p style="text-indent: 2em;">B = A
+<p style="text-indent: 2em;">A = T
+
+<h3 id="4-1-4-哈希值更新"><a href="#4-1-4-哈希值更新" class="headerlink" title="4.1.4 哈希值更新"></a>4.1.4 哈希值更新</h3><p style="text-indent: 2em;">80轮循环结束后，A,B,C,D,E 这5个工作变量的值会发生改变，最后将这5个变量值累加到当前的哈希值中：
+<p style="text-indent: 2em;">H0 = H0 + A
+<p style="text-indent: 2em;">H1 = H1 + B
+<p style="text-indent: 2em;">H2 = H2 + C
+<p style="text-indent: 2em;">H3 = H3 + D
+<p style="text-indent: 2em;">H4 = H4 + E
+
+<p style="text-indent: 2em;">注意到这里还未结束，这只是处理了第一个512位（第一组），后续组的处理方式虽也是如此，但是后续的H0~H4的值都依赖于前一组的计算。
+而当所有的消息块都处理完毕后，得到的H0到H4的值就组成了最终的160位哈希值输出。
+
+<h1 id="SHA-256"><a href="#SHA-256" class="headerlink" title="SHA-256"></a>SHA-256</h1><p>SHA-256会接收任意长度的输入数据，并将其转换为固定长度的256位（32字节）哈希值。</p>
+<p>SHA-256与SHA-1的相同点：</p>
+<p style="text-indent: 2em;">SHA-256的填充方式与SHA-1一致，同时也是按照64字节（512）分组处理。
+
+<p>SHA-256与SHA-1的不同点：</p>
+<p><strong><p style="text-indent: 2em;">1.SHA-256使用8个32位的初始哈希值：</strong></p>
+<p style="text-indent: 2em;">H0 = 0x6a09e667
+<p style="text-indent: 2em;">H1 = 0xbb67ae85
+<p style="text-indent: 2em;">H2 = 0x3c6ef372
+<p style="text-indent: 2em;">H3 = 0xa54ff53a
+<p style="text-indent: 2em;">H4 = 0x510e527f
+<p style="text-indent: 2em;">H5 = 0x9b05688c
+<p style="text-indent: 2em;">H6 = 0x1f83d9ab
+<p style="text-indent: 2em;">H7 = 0x5be0cd19
+
+<p><strong><p style="text-indent: 2em;">2.SHA-256在消息扩充时，只会扩充到64组（SHA-1会扩充到80组），同时扩展公式也更加复杂：</strong></p>
+<blockquote>
+<p>W[t]=σ1​(W[t−2])+W[t−7]+σ0​(W[t−15])+W[t−16]</p>
+</blockquote>
+<p style="text-indent: 2em;">其中：
+
+<p style="text-indent: 2em;">σ0​(x)=(x≫7)⊕(x≫18)⊕(x≫3)
+
+<p style="text-indent: 2em;">σ1​(x)=(x≫17)⊕(x≫19)⊕(x≫10)
+
+
+
+<p><strong><p style="text-indent: 2em;">3.SHA-256只进行64轮计算。</strong>这64轮压缩计算的每一轮计算会用到前面扩展的消息字和一组 64 个常量 K。这些K值是从前 64 个素数的立方根的小数部分提取出来的，具体值如下：</p>
+<p style="text-indent: 2em;">K0 = 0x428a2f98, K1 = 0x71374491, ..., K63 = 0xc67178f2
+
+<p style="text-indent: 2em;">**4.SHA-256更新变量的方式：**
+
+<p style="text-indent: 4em;">1）计算两个主要的逻辑函数：
+
+<p style="text-indent: 6em;">选择函数（Ch）：Ch(e,f,g)=(e&f)⊕((∼e)&g)
+
+<p style="text-indent: 4em;">这个函数从 e、f、g 中选择，主要决定了 e 的值对 f 和 g 的影响。
+
+<p style="text-indent: 6em;">多数函数（Maj）：Maj(a,b,c)=(a&b)⊕(a&c)⊕(b&c)
+
+<p style="text-indent: 4em;">这个函数用来在 a、b 和 c 中做“多数决策”。
+
+<p style="text-indent: 4em;">2）计算两个额外的非线性函数：
+
+<p style="text-indent: 6em;">Σ0：Σ0​(a)=(a≫2)⊕(a≫13)⊕(a≫22)
+
+<p style="text-indent: 6em;">Σ1：Σ1​(e)=(e≫6)⊕(e≫11)⊕(e≫25)
+
+<p><strong><p style="text-indent: 2em;">5.有了以上这四个值后，每轮的压缩操作按照以下步骤进行：</strong></p>
+<p style="text-indent: 4em;">1、计算 T1 和 T2：
+
+<p style="text-indent: 6em;">T1=h+Σ1​(e)+Ch(e,f,g)+Kt​+Wt
+
+<p style="text-indent: 6em;">T2=Σ0​(a)+Maj(a,b,c)​
+
+<p style="text-indent: 4em;">2、更新8个变量值：
+
+<p style="text-indent: 6em;">h=g
+
+<p style="text-indent: 6em;">g=f
+
+<p style="text-indent: 6em;">e=d+T1
+
+<p style="text-indent: 6em;">d=c
+
+<p style="text-indent: 6em;">c=b
+
+<p style="text-indent: 6em;">b=a
+
+<p style="text-indent: 6em;">a=T1+T2
+
+
+<p><strong><p style="text-indent: 2em;">6.SHA-256在每一轮更新完变量后就会更新前一轮的哈希值（H0~H7）：</strong></p>
+<p style="text-indent: 6em;">H0 = H0 +a
+
+
+<p style="text-indent: 6em;">H1 = H1 + b
+
+
+<p style="text-indent: 6em;">...
+
+
+<p style="text-indent: 6em;">H7 = H7 + h
+
+<p style="text-indent: 2em;">以此类推，最后的哈希值（H0~H7）就会包含每一组的计算结果，从而形成256位加密哈希值。
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Em_Lin<br>
+        <strong>本文链接：</strong><a href="http://ermu0.github.io/2024/09/17/algorithm/sha1_sha256/" title="http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;17&#x2F;algorithm&#x2F;sha1_sha256&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;17&#x2F;algorithm&#x2F;sha1_sha256&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/tasks/" rel="tag">tasks</a>
+    
+</div>
+  
+  
+
+  
+      <div class="nexmoe-post-footer">
+          <script src="https://giscus.app/client.js"
+    data-repo="nexmoe/nexmoe.com"
+    data-repo-id="R_kgDOJI1XUA"
+    data-category="General"
+    data-category-id="DIC_kwDOJI1XUM4CU1nn"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="en"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
+
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SHA-1"><span class="toc-number">1.</span> <span class="toc-text">SHA-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B6%88%E6%81%AF%E5%A1%AB%E5%85%85"><span class="toc-number">1.1.1.</span> <span class="toc-text">1 消息填充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B6%88%E6%81%AF%E5%88%86%E5%9D%97"><span class="toc-number">1.1.2.</span> <span class="toc-text">2 消息分块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%9D%E5%A7%8B%E5%93%88%E5%B8%8C"><span class="toc-number">1.1.3.</span> <span class="toc-text">3 初始哈希</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86"><span class="toc-number">1.1.4.</span> <span class="toc-text">4 消息处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%B6%88%E6%81%AF%E6%89%A9%E5%B1%95%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.5.</span> <span class="toc-text">4.1 消息扩展步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-1-%E6%B6%88%E6%81%AF%E6%89%A9%E5%B1%95"><span class="toc-number">1.1.6.</span> <span class="toc-text">4.1.1 消息扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-2-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%A5%E4%BD%9C%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.7.</span> <span class="toc-text">4.1.2 初始化工作变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-3-80%E8%BD%AE%E4%B8%BB%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.1.8.</span> <span class="toc-text">4.1.3 80轮主循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-4-%E5%93%88%E5%B8%8C%E5%80%BC%E6%9B%B4%E6%96%B0"><span class="toc-number">1.1.9.</span> <span class="toc-text">4.1.4 哈希值更新</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SHA-256"><span class="toc-number">2.</span> <span class="toc-text">SHA-256</span></a></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="搜索" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script src='https://sentry.mixcm.com/js-sdk-loader/affb515ef7b517cb3fc0dc63d65a9fc2.min.js' crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>
