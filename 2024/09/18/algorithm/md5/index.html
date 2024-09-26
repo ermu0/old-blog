@@ -9,7 +9,7 @@
 <meta name="description" content="原理MD5能够将任意长度的数据输入映射为固定长度的128位散列值。 它加密过程可以分成3部分：数据填充、数据处理以及数据输出。 1 数据填充MD5的填充规则与SHA-1以及SHA-256相同。如果数据长度不够，则会先在数据末尾填充1bit（二进制符号还是1），之后就疯狂填充0，直到448位为止，预留64位作为原数据的长度值填充。 如果还是留有疑问，可以移步查看这篇文章：https:&#x2F;&#x2F;ermu0.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MD5">
-<meta property="og:url" content="https://ermu0.github.io/2024/09/18/algorithm/md5/index.html">
+<meta property="og:url" content="https://ermu0.cn/2024/09/18/algorithm/md5/index.html">
 <meta property="og:site_name" content="Em_Lin">
 <meta property="og:description" content="原理MD5能够将任意长度的数据输入映射为固定长度的128位散列值。 它加密过程可以分成3部分：数据填充、数据处理以及数据输出。 1 数据填充MD5的填充规则与SHA-1以及SHA-256相同。如果数据长度不够，则会先在数据末尾填充1bit（二进制符号还是1），之后就疯狂填充0，直到448位为止，预留64位作为原数据的长度值填充。 如果还是留有疑问，可以移步查看这篇文章：https:&#x2F;&#x2F;ermu0.">
 <meta property="og:locale" content="zh_CN">
@@ -23,15 +23,15 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1727337187114">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1727337269429">
 
-<link rel="stylesheet" href="/css/style.css?v=1727337187114">
+<link rel="stylesheet" href="/css/style.css?v=1727337269429">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1727337187114">
+        <link rel="stylesheet" href="/custom.css?v=1727337269429">
     
 
 
@@ -41,7 +41,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1727337187114"></script>
+<script async src="/js/app.js?v=1727337269429"></script>
 
  
 
@@ -99,7 +99,7 @@
             </div>
         </a>
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="https://ermu0.github.io/2024/09/10/hello-world/" title="关于博主">
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://ermu0.github.io/2024/09/10/hello-world/" title="关于博主">
             <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
             <div class="mdui-list-item-content">
                 关于博主
@@ -338,7 +338,7 @@
     <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>MD5能够将任意长度的数据输入映射为固定长度的128位散列值。</p>
 <p>它加密过程可以分成3部分：数据填充、数据处理以及数据输出。</p>
 <h2 id="1-数据填充"><a href="#1-数据填充" class="headerlink" title="1 数据填充"></a>1 数据填充</h2><p>MD5的填充规则与SHA-1以及SHA-256相同。如果数据长度不够，则会先在数据末尾填充1bit（二进制符号还是1），之后就疯狂填充0，直到448位为止，预留64位作为原数据的长度值填充。</p>
-<p>如果还是留有疑问，可以移步查看这篇文章：<br><a href="https://ermu0.github.io/2024/09/17/algorithm/sha1_sha256/" title="《SHA-1与SHA-256》——Em_Lin">https://ermu0.github.io/2024/09/17/algorithm/sha1_sha256/</a></p>
+<p>如果还是留有疑问，可以移步查看这篇文章：<br><a target="_blank" rel="noopener" href="https://ermu0.github.io/2024/09/17/algorithm/sha1_sha256/" title="《SHA-1与SHA-256》——Em_Lin">https://ermu0.github.io/2024/09/17/algorithm/sha1_sha256/</a></p>
 <h2 id="2-数据处理"><a href="#2-数据处理" class="headerlink" title="2 数据处理"></a>2 数据处理</h2><p>MD5算法将填充后的数据按512位（64字节）块进行处理。每个块会被分成16个32位的子块，记作M[0], M[1], …, M[15]。</p>
 <p>注意数据处理前首先要初始化四个变量值：</p>
 <ul>
@@ -391,7 +391,7 @@
       
     <div class="nexmoe-post-copyright">
         <strong>本文作者：</strong>Em_Lin<br>
-        <strong>本文链接：</strong><a href="https://ermu0.github.io/2024/09/18/algorithm/md5/" title="https:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;18&#x2F;algorithm&#x2F;md5&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;18&#x2F;algorithm&#x2F;md5&#x2F;</a><br>
+        <strong>本文链接：</strong><a href="https://ermu0.cn/2024/09/18/algorithm/md5/" title="https:&#x2F;&#x2F;ermu0.cn&#x2F;2024&#x2F;09&#x2F;18&#x2F;algorithm&#x2F;md5&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;ermu0.cn&#x2F;2024&#x2F;09&#x2F;18&#x2F;algorithm&#x2F;md5&#x2F;</a><br>
         
             <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0 CN</a> 协议进行许可
 
