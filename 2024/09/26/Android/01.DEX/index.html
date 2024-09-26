@@ -1,37 +1,40 @@
 <!doctype html>
 <html lang="zh"><head>
-<title>TEA - Em_Lin</title>
+<title>DEX文件格式（一） - Em_Lin</title>
 <meta charset="UTF-8">
 <meta name="keywords" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
 <link rel="shortcut icon" href="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" type="image/png" />
-<meta name="description" content="tea加密算法是比较简单的分组加密算法 TEA原理TEA处理的数据块大小为64位（8字节），密钥长度为128位，基本操作包括32轮的加密循环。  TEA每次处理64位的数据块，然后将其分为两个32位（4字节）的部分；接着使用128位的密钥，同样的，也要讲密钥进行顺序分组，一共分成4组，每个部分32位（4字节）。  同时还有一个delta ，它是一个常数，通常为 0x9E3779B9，它是黄金分割比">
+<meta name="description" content="DEX文件格式这里暂时只做一个大概的分析 什么是DEXDEX文件是由安卓应用JAVA代码编译后生成的字节码文件。根据官方文档所给出的DEX文件格式，DEX文件主要由7个部分组成，分别是：header、string_ids、type_ids、proto_ids、field_ids、method_ids、class_defs、data以及link_data。 DEX文件结构解析其结构如图所示：  关于">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TEA">
-<meta property="og:url" content="http://ermu0.github.io/2024/09/18/algorithm/tea/index.html">
+<meta property="og:title" content="DEX文件格式（一）">
+<meta property="og:url" content="http://ermu0.github.io/2024/09/26/Android/01.DEX/index.html">
 <meta property="og:site_name" content="Em_Lin">
-<meta property="og:description" content="tea加密算法是比较简单的分组加密算法 TEA原理TEA处理的数据块大小为64位（8字节），密钥长度为128位，基本操作包括32轮的加密循环。  TEA每次处理64位的数据块，然后将其分为两个32位（4字节）的部分；接着使用128位的密钥，同样的，也要讲密钥进行顺序分组，一共分成4组，每个部分32位（4字节）。  同时还有一个delta ，它是一个常数，通常为 0x9E3779B9，它是黄金分割比">
+<meta property="og:description" content="DEX文件格式这里暂时只做一个大概的分析 什么是DEXDEX文件是由安卓应用JAVA代码编译后生成的字节码文件。根据官方文档所给出的DEX文件格式，DEX文件主要由7个部分组成，分别是：header、string_ids、type_ids、proto_ids、field_ids、method_ids、class_defs、data以及link_data。 DEX文件结构解析其结构如图所示：  关于">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-09-17T16:36:52.569Z">
-<meta property="article:modified_time" content="2024-09-17T16:36:52.569Z">
+<meta property="og:image" content="https://c.img.dasctf.com/LightPicture/2024/09/acc6002e6dcbb080.png">
+<meta property="og:image" content="https://c.img.dasctf.com/LightPicture/2024/09/5ef4a9b10a3ab680.png">
+<meta property="article:published_time" content="2024-09-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-25T16:00:00.000Z">
 <meta property="article:author" content="Em_Lin">
-<meta property="article:tag" content="tasks">
+<meta property="article:tag" content="DEX">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://c.img.dasctf.com/LightPicture/2024/09/acc6002e6dcbb080.png">
 
 <link rel="stylesheet" href="/lib/fancybox/fancybox.css">
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1727335020047">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1727335020041">
 
-<link rel="stylesheet" href="/css/style.css?v=1727335020047">
+<link rel="stylesheet" href="/css/style.css?v=1727335020041">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1727335020047">
+        <link rel="stylesheet" href="/custom.css?v=1727335020041">
     
 
 
@@ -41,7 +44,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1727335020047"></script>
+<script async src="/js/app.js?v=1727335020041"></script>
 
  
 
@@ -315,16 +318,16 @@
   <article>
     
         <div class="nexmoe-post-cover"> 
-            <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="TEA" loading="lazy">
-            <h1>TEA</h1>
+            <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="DEX文件格式（一）" loading="lazy">
+            <h1>DEX文件格式（一）</h1>
         </div>
     
     
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2024年09月18日</a>
+        <a class="nexmoefont icon-calendar-fill">2024年09月26日</a>
         
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a>
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/Android/">Android</a>
         
         
     </div>
@@ -335,18 +338,31 @@
     
 </div>
 
-    <p>tea加密算法是比较简单的分组加密算法</p>
-<h2 id="TEA"><a href="#TEA" class="headerlink" title="TEA"></a>TEA</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p style="text-indent: 2em;">TEA处理的数据块大小为64位（8字节），密钥长度为128位，基本操作包括32轮的加密循环。
+    <h1 id="DEX文件格式"><a href="#DEX文件格式" class="headerlink" title="DEX文件格式"></a>DEX文件格式</h1><p>这里暂时只做一个大概的分析</p>
+<h2 id="什么是DEX"><a href="#什么是DEX" class="headerlink" title="什么是DEX"></a>什么是DEX</h2><p><strong>DEX</strong>文件是由安卓应用<strong>JAVA代码</strong>编译后生成的<strong>字节码文件</strong>。根据官方文档所给出的<strong>DEX</strong>文件格式，<strong>DEX</strong>文件主要由<strong>7</strong>个部分组成，分别是：<em><strong>header</strong></em>、<em><strong>string_ids</strong></em>、<em><strong>type_ids</strong></em>、<em><strong>proto_ids</strong></em>、<em><strong>field_ids</strong></em>、<em><strong>method_ids</strong></em>、<em><strong>class_defs</strong></em>、<em><strong>data</strong></em>以及<em><strong>link_data</strong></em>。</p>
+<h2 id="DEX文件结构解析"><a href="#DEX文件结构解析" class="headerlink" title="DEX文件结构解析"></a>DEX文件结构解析</h2><p>其结构如图所示：</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://c.img.dasctf.com/LightPicture/2024/09/acc6002e6dcbb080.png" alt="p1" data-caption="p1" loading="lazy"></p>
+<p>关于DEX文件结构中的这些字段内容，下面做一个大概解释：</p>
+<p><em><strong>1）</strong></em> <strong>header</strong>为<strong>DEX</strong>文件头，它指定了<strong>DEX</strong>文件的一些属性，包括：<em><strong>magic</strong></em>、<em><strong>checksum</strong></em>、<em><strong>signature</strong></em>、<em><strong>file_size</strong></em>、<em><strong>header_size</strong></em>以及其它<strong>6</strong>个部分在<strong>DEX</strong>文件中的物理偏移等信息；</p>
+<p><em><strong>2）</strong></em> <strong>string_ids</strong>到<strong>class_def</strong>中的部分可以概括为索引结构区，包括字符串、类型、方法原型、类和方法；</p>
+<p><em><strong>3）</strong></em> <strong>data</strong>数据区则存储着文件所有的类、方法、字段等真实数据；</p>
+<p><em><strong>4）</strong></em> <strong>link_data</strong>为静态链接数据区，包含了运行时所需要的元数据，例如：索引和偏移量。</p>
+<p>但是其中最重要的还是<strong>heade</strong>r头，下面会详细说明。</p>
+<h2 id="DEX文件头header"><a href="#DEX文件头header" class="headerlink" title="DEX文件头header"></a>DEX文件头header</h2><p>header头的结构如图所示：<img onerror="imgOnError(this);" data-fancybox="gallery" src="https://c.img.dasctf.com/LightPicture/2024/09/5ef4a9b10a3ab680.png" alt="p2" data-caption="p2" loading="lazy"></p>
+<p>各个字段内容的作用下面会一一解释：</p>
+<p><em><strong>1）</strong></em> 其中<strong>magic</strong>字段用于<strong>DEX版本标识</strong>，常用一个8字节固定值进行标识；</p>
+<p><em><strong>2）</strong></em> <strong>checksum</strong>字段是<strong>DEX文件的校验码</strong>，用于检验文件内容的完整性，该值是由除magic字段和本字段之外的字段字节进行计算的CRC32校验值，长度为4个字节；</p>
+<p><em><strong>3）</strong></em> <strong>signature</strong>字段又叫做<strong>签名字段</strong>，它是一个<strong>SHA-1</strong>散列值，计算范围是除了magic值、checksum值以及本字段外的所有字段值；</p>
+<p><em><strong>4）</strong></em> <strong>file_size</strong>表示<strong>整个文件的大小</strong>，而<strong>header_size</strong>表示整个<strong>header部分的大小</strong>；</p>
+<p><em><strong>5）</strong></em> <strong>ending_tag</strong>字段是<strong>字节顺序标识</strong>，即指示该文件的字节序是大端序还是小端序；</p>
+<p><em><strong>6）</strong></em> <strong>link_size</strong>字段表示<strong>连接段的大小</strong>，link_off表示链接段的偏移；</p>
+<p><em><strong>7）</strong></em> <strong>map_off</strong>字段指定了DexMapList结构的文件偏移，对应DEX文件格式中的link_data字段；</p>
+<p>对于header头中出现的“<strong>xx_ids_size</strong>”格式的字段表示 <strong>xx数据类型在DEX文件中的数量</strong>，而“<strong>xx_ids_off</strong>”格式的字段表示<strong>xx数据类型在DEX文件中的起始偏移量</strong>；</p>
+<p><em><strong>8）</strong></em> <strong>class_defs_size</strong>与<strong>class_defs_off</strong>字段分别表示在DEX文件中class数量以及class在class_defs字段中的起始偏移；</p>
+<p><em><strong>9）</strong></em> <strong>data_size</strong>与<strong>data_off</strong>字段分别表示data这个字段的大小以及data字段在DEX文件中的偏移。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总之，了解并分析DEX文件格式及其相关字段信息，对理解安卓二代壳（落地/不落地动态加载）与三代壳（指令抽离）的原理有着基础性的作用，想要在安卓安全上有些许造诣就要对该文件格式内容烂熟于心。</p>
+<p>关于DEX文件内容的解析还未结束，上述内容暂时作一个参考价值，后续内容会缓慢完善。</p>
 
-<p style="text-indent: 2em;">TEA每次处理64位的数据块，然后将其分为两个32位（4字节）的部分；接着使用128位的密钥，同样的，也要讲密钥进行顺序分组，一共分成4组，每个部分32位（4字节）。
-
-<p style="text-indent: 2em;">同时还有一个delta ，它是一个常数，通常为 0x9E3779B9，它是黄金分割比例乘以2的幂，确保加密过程中的变化足够混乱。
-
-<p>加密核心公式为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//将数据块分割成两部分，每个部分有8字节</span></span><br><span class="line">v0 = byte[<span class="number">0</span>];</span><br><span class="line">v1 = byte[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">DELTA = <span class="number">0x9E3779B9</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)&#123;</span><br><span class="line">    sum += DELTA</span><br><span class="line">    v0 += ((v1 &lt;&lt; <span class="number">4</span>) + k[<span class="number">0</span>]) ^ (v1 + sum) ^ ((v1 &gt;&gt; <span class="number">5</span>) + k[<span class="number">1</span>]);</span><br><span class="line">    v1 += ((v0 &lt;&lt; <span class="number">4</span>) + k[<span class="number">2</span>]) ^ (v0 + sum) ^ ((v0 &gt;&gt; <span class="number">5</span>) + k[<span class="number">3</span>]);</span><br><span class="line">    v0 &amp;= <span class="number">0xFFFFFFFF</span>;<span class="comment">// 保证32位        </span></span><br><span class="line">    v1 &amp;= <span class="number">0xFFFFFFFF</span>;<span class="comment">// 保证32位</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>解密核心公式为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//将加密后数据块分割成两部分，每个部分有8字节</span></span><br><span class="line">v0 = byte[<span class="number">0</span>];</span><br><span class="line">v1 = byte[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)&#123;</span><br><span class="line">    v1 -= ((v0 &lt;&lt; <span class="number">4</span>) + k[<span class="number">2</span>]) ^ (v0 + sum) ^ ((v0 &gt;&gt; <span class="number">5</span>) + k[<span class="number">3</span>]);</span><br><span class="line">    v1 &amp;= <span class="number">0xFFFFFFFF</span># 保证<span class="number">32</span>位    </span><br><span class="line">    v0 -= ((v1 &lt;&lt; <span class="number">4</span>) + k[<span class="number">0</span>]) ^ (v1 + sum) ^ ((v1 &gt;&gt; <span class="number">5</span>) + k[<span class="number">1</span>]);</span><br><span class="line">    v0 &amp;= <span class="number">0xFFFFFFFF</span>;<span class="comment">// 保证32位    </span></span><br><span class="line">    sum -= DELTA</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
     
   </article>
 
@@ -354,7 +370,7 @@
       
     <div class="nexmoe-post-copyright">
         <strong>本文作者：</strong>Em_Lin<br>
-        <strong>本文链接：</strong><a href="http://ermu0.github.io/2024/09/18/algorithm/tea/" title="http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;18&#x2F;algorithm&#x2F;tea&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;18&#x2F;algorithm&#x2F;tea&#x2F;</a><br>
+        <strong>本文链接：</strong><a href="http://ermu0.github.io/2024/09/26/Android/01.DEX/" title="http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;26&#x2F;Android&#x2F;01.DEX&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;26&#x2F;Android&#x2F;01.DEX&#x2F;</a><br>
         
             <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0 CN</a> 协议进行许可
 
@@ -367,7 +383,7 @@
   <div class="nexmoe-post-meta nexmoe-rainbow">
    
     
-        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/tasks/" rel="tag">tasks</a>
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/DEX/" rel="tag">DEX</a>
     
 </div>
   
@@ -404,7 +420,7 @@
             <button class="mdui-fab catalog" style="overflow:unset;">
                 <i class="nexmoefont icon-i-catalog"></i>
                 <div class="nexmoe-toc">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TEA"><span class="toc-number">1.</span> <span class="toc-text">TEA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DEX%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">DEX文件格式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFDEX"><span class="toc-number">1.1.</span> <span class="toc-text">什么是DEX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DEX%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E8%A7%A3%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">DEX文件结构解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DEX%E6%96%87%E4%BB%B6%E5%A4%B4header"><span class="toc-number">1.3.</span> <span class="toc-text">DEX文件头header</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
                 </div>
             </button>
             

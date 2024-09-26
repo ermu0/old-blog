@@ -6,12 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
 <link rel="shortcut icon" href="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" type="image/png" />
-<meta name="description" content="这一篇主要包含SHA-1与SHA-256的基本原理以及加密过程，同时也会对两者进行一个对比。 SHA-1SHA-1会接收任意长度的输入数据，并将其转换为固定长度的160位（20字节）哈希值。 原理1 消息填充 SHA-1 要处理的消息长度必须是512位（64字节）的倍数，因此消息首先要进行填充。填充过程包括在消息的末尾加一个1比特，然后填充足够的0比特，直到消息的长度比512少64位（即满足512">
+<meta name="description" content="这一篇主要包含SHA-1与SHA-256的基本原理以及加密过程，同时也会对两者进行一个对比。 SHA-1SHA-1会接收任意长度的输入数据，并将其转换为固定长度的160位（20字节）哈希值。 原理1 消息填充SHA-1 要处理的消息长度必须是512位（64字节）的倍数，因此消息首先要进行填充。填充过程包括在消息的末尾加一个1比特，然后填充足够的0比特，直到消息的长度比512少64位（即满足512位">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SHA-1与SHA-256">
 <meta property="og:url" content="http://ermu0.github.io/2024/09/17/algorithm/sha1_sha256/index.html">
 <meta property="og:site_name" content="Em_Lin">
-<meta property="og:description" content="这一篇主要包含SHA-1与SHA-256的基本原理以及加密过程，同时也会对两者进行一个对比。 SHA-1SHA-1会接收任意长度的输入数据，并将其转换为固定长度的160位（20字节）哈希值。 原理1 消息填充 SHA-1 要处理的消息长度必须是512位（64字节）的倍数，因此消息首先要进行填充。填充过程包括在消息的末尾加一个1比特，然后填充足够的0比特，直到消息的长度比512少64位（即满足512">
+<meta property="og:description" content="这一篇主要包含SHA-1与SHA-256的基本原理以及加密过程，同时也会对两者进行一个对比。 SHA-1SHA-1会接收任意长度的输入数据，并将其转换为固定长度的160位（20字节）哈希值。 原理1 消息填充SHA-1 要处理的消息长度必须是512位（64字节）的倍数，因此消息首先要进行填充。填充过程包括在消息的末尾加一个1比特，然后填充足够的0比特，直到消息的长度比512少64位（即满足512位">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-16T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-09-16T16:00:00.000Z">
@@ -23,15 +23,15 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1726666381054">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1727335020070">
 
-<link rel="stylesheet" href="/css/style.css?v=1726666381054">
+<link rel="stylesheet" href="/css/style.css?v=1727335020070">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1726666381054">
+        <link rel="stylesheet" href="/custom.css?v=1727335020070">
     
 
 
@@ -41,7 +41,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1726666381054"></script>
+<script async src="/js/app.js?v=1727335020070"></script>
 
  
 
@@ -72,9 +72,9 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>10</div>
-        <div><span>标签</span>2</div>
-        <div><span>分类</span>2</div>
+        <div><span>文章</span>11</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>3</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -99,7 +99,7 @@
             </div>
         </a>
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博主">
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="https://ermu0.github.io/2024/09/10/hello-world/" title="关于博主">
             <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
             <div class="mdui-list-item-content">
                 关于博主
@@ -200,6 +200,13 @@
         
 
         <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Android/">Android</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
           <a class="category-list-link" href="/categories/加密算法/">加密算法</a>
           <span class="category-list-count">6</span>
         </li>
@@ -223,12 +230,12 @@
         
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/tasks/" style="font-size: 20px;">tasks</a> <a href="/tags/%E7%AE%80%E4%BB%8B/" style="font-size: 10px;">简介</a>
+      <a href="/tags/DEX/" style="font-size: 10px;">DEX</a> <a href="/tags/tasks/" style="font-size: 20px;">tasks</a> <a href="/tags/%E7%AE%80%E4%BB%8B/" style="font-size: 10px;">简介</a>
     </div>
     
       <script>
         var maxTagcloud = parseInt(17);
-        var tags_length = parseInt(2);
+        var tags_length = parseInt(3);
         var tags_arr = [];
         for(var i = 0; i < tags_length; i++){
           tags_arr.push(i);
@@ -251,7 +258,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -264,6 +271,10 @@
     <h3 class="nexmoe-widget-title">最新文章</h3>
     <div class="nexmoe-widget">
       <ul>
+        
+          <li>
+            <a href="/2024/09/26/Android/01.DEX/">DEX文件格式（一）</a>
+          </li>
         
           <li>
             <a href="/2024/09/18/algorithm/tea/">TEA</a>
@@ -279,10 +290,6 @@
         
           <li>
             <a href="/2024/09/18/algorithm/md5/">MD5</a>
-          </li>
-        
-          <li>
-            <a href="/2024/09/17/reverse/tasks/task0_day3/">task0_day3</a>
           </li>
         
       </ul>
@@ -330,230 +337,89 @@
 
     <p>这一篇主要包含SHA-1与SHA-256的基本原理以及加密过程，同时也会对两者进行一个对比。</p>
 <h1 id="SHA-1"><a href="#SHA-1" class="headerlink" title="SHA-1"></a>SHA-1</h1><p>SHA-1会接收任意长度的输入数据，并将其转换为固定长度的160位（20字节）哈希值。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="1-消息填充"><a href="#1-消息填充" class="headerlink" title="1 消息填充"></a>1 消息填充</h3><p style="text-indent: 2em;">
-SHA-1 要处理的消息长度必须是512位（64字节）的倍数，因此消息首先要进行填充。填充过程包括在消息的末尾加一个1比特，然后填充足够的0比特，直到消息的长度比512少64位（即满足512位块的需求）。最后，消息的最后64位用于存储原始消息的长度。
-</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="1-消息填充"><a href="#1-消息填充" class="headerlink" title="1 消息填充"></a>1 消息填充</h3><p>SHA-1 要处理的消息长度必须是512位（64字节）的倍数，因此消息首先要进行填充。填充过程包括在消息的末尾加一个1比特，然后填充足够的0比特，直到消息的长度比512少64位（即满足512位块的需求）。最后，消息的最后64位用于存储原始消息的长度。</p>
+<p>上面的说法可能有点苍白，这里举个例子，假设我们要加密的信息是” <strong>abc</strong> “：</p>
+<p><em><strong>第一步</strong></em>：先将字符按照字节处理”<strong>a</strong>“ -&gt; 0x61；”<strong>b</strong>“ -&gt; 0x62；”<strong>c</strong>“ -&gt; 0x63，因此”<strong>abc</strong>“这个字符串的字节表示为：<br>    <code>0x61 0x62 0x63（共3个字节）</code></p>
+<p><em><strong>第二步</strong></em>：往0x61 0x62 0x63后面添加1bit，也就是0x61 0x62 0x63 1，但是sha是按字节处理所以在1的后面还要填充7个0，也就是10000000，变化成字节也就是0x80，因此第二部结束后字符串被处理成了：<br>    <code>0x61 0x62 0x63 0x80（共4个字节）</code></p>
+<p><em><strong>第三步</strong></em>：继续填充0，直到有56个字节（448位）为止，因为剩下的16个字节（64位）要作为明文的长度表示，所以第三步结束后字符串被处理成了：<br>    <code>0x61 0x62 0x63 0x80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</code></p>
+<p><em><strong>第四步</strong></em>：由于明文是3个字节，即24位，所以它的长度就是24，用字节表示就是0x18，所以第四步结束后，字符串最终被处理成了：<br>    <code>0x61 0x62 0x63 0x80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 18</code></p>
+<h3 id="2-消息分块"><a href="#2-消息分块" class="headerlink" title="2 消息分块"></a>2 消息分块</h3><p>填充后的消息被分成多个512位的块，每个块被单独处理。对于每个512位的块，SHA-1 会将其分为16个32位的子块。</p>
+<h3 id="3-初始哈希"><a href="#3-初始哈希" class="headerlink" title="3 初始哈希"></a>3 初始哈希</h3><p>SHA-1 使用5个32位的初始常量哈希值，这些值分别被称为H0、H1、H2、H3、H4，并具有如下的初始值：</p>
+<pre><code>H0 = 0x67452301
 
-<p style="text-indent: 2em;">
-上面的说法可能有点苍白，这里举个例子，假设我们要加密的信息是" abc "：
-</p>
+H1 = 0xEFCDAB89 
 
-<p style="text-indent: 2em;">第一步：先将字符按照字节处理
-"a" -> 0x61；"b" -> 0x62；"c" -> 0x63
+H2 = 0x98BADCFE 
 
-<p>因此”abc”这个字符串的字节表示为：</p>
-<p style="text-indent: 2em;">0x61 0x62 0x63（共3个字节）
+H3 = 0x10325476 
 
-<p style="text-indent: 2em;">第二步：往0x61 0x62 0x63后面添加1bit，也就是0x61 0x62 0x63 1，但是sha是按字节处理所以在1的后面还要填充7个0，也就是10000000，变化成字节也就是0x80
+H4 = 0xC3D2E1F0
+</code></pre>
+<h3 id="4-消息处理"><a href="#4-消息处理" class="headerlink" title="4 消息处理"></a>4 消息处理</h3><p>对于每个512位的消息块，SHA-1 会使用一个特定的处理过程，包括消息扩展和80轮的循环运算。<br>    <em><strong>消息扩展阶段：</strong></em>最初的16个32位的子块被扩展为80个32位的子块。<br>    <em><strong>循环操作阶段：</strong></em>循环涉及到布尔函数、模加运算和移位操作，每轮操作会将当前的哈希值与扩展的子块进行复杂的计算。在每轮循环中，SHA-1 使用了4个固定的逻辑运算函数，这些函数根据循环的阶段变化：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">阶段 <span class="number">1</span> (<span class="number">0</span> ≤ t ≤ <span class="number">19</span>): f = (B AND C) OR ((NOT B) AND D)</span><br></pre></td></tr></table></figure>
 
-<p>因此第二部结束后字符串被处理成了：</p>
-<p style="text-indent: 2em;">0x61 0x62 0x63 0x80（共4个字节）
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">阶段 <span class="number">2</span> (<span class="number">20</span> ≤ t ≤ <span class="number">39</span>): f = B XOR C XOR D</span><br></pre></td></tr></table></figure>
 
-<p style="text-indent: 2em;">第三步：继续填充0，直到有56个字节（448位）为止，因为剩下的16个字节（64位）要作为明文的长度表示，
-所以第三步结束后字符串被处理成了：
-    
-<p>0x61 0x62 0x63 0x80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</p>
-<p style="text-indent: 2em;">第四步：由于明文是3个字节，即24位，所以它的长度就是24，用字节表示就是0x18，
-所以第四步结束后，字符串最终被处理成了：
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">阶段 <span class="number">3</span> (<span class="number">40</span> ≤ t ≤ <span class="number">59</span>): f = (B AND C) OR (B AND D) OR (C AND D)</span><br></pre></td></tr></table></figure>
 
-<p>0x61 0x62 0x63 0x80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 18</p>
-<h3 id="2-消息分块"><a href="#2-消息分块" class="headerlink" title="2 消息分块"></a>2 消息分块</h3><p style="text-indent: 2em;">
-填充后的消息被分成多个512位的块，每个块被单独处理。对于每个512位的块，SHA-1 会将其分为16个32位的子块。
-</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">阶段 <span class="number">4</span> (<span class="number">60</span> ≤ t ≤ <span class="number">79</span>): f = B XOR C XOR D</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-初始哈希"><a href="#3-初始哈希" class="headerlink" title="3 初始哈希"></a>3 初始哈希</h3><p style="text-indent: 2em;">
-SHA-1 使用5个32位的初始常量哈希值，这些值分别被称为H0、H1、H2、H3、H4，并具有如下的初始值：
-</p>
+<p>每轮运算中，还会使用一个常量值（K），根据不同的阶段，K的值也不同：<br>    K = 0x5A827999 (0 ≤ t ≤ 19)</p>
+<pre><code>K = 0x6ED9EBA1 (20 ≤ t ≤ 39)
 
-<p style="text-indent: 2em;">    H0 = 0x67452301
-     
-<p style="text-indent: 2em;">    H1 = 0xEFCDAB89 
-    
-<p style="text-indent: 2em;">    H2 = 0x98BADCFE 
-    
-<p style="text-indent: 2em;">    H3 = 0x10325476 
-    
-<p style="text-indent: 2em;">    H4 = 0xC3D2E1F0
+K = 0x8F1BBCDC (40 ≤ t ≤ 59)
 
-<h3 id="4-消息处理"><a href="#4-消息处理" class="headerlink" title="4 消息处理"></a>4 消息处理</h3><p style="text-indent: 2em;">
-对于每个512位的消息块，SHA-1 会使用一个特定的处理过程，包括消息扩展和80轮的循环运算。
-</p>
+K = 0xCA62C1D6 (60 ≤ t ≤ 79)
+</code></pre>
+<p>上面这里只是大概梳理了一下消息处理的过程（目的是为了有基础的了解），然后这里再详细解释一下。</p>
+<h4 id="4-1-消息扩展"><a href="#4-1-消息扩展" class="headerlink" title="4.1 消息扩展"></a>4.1 消息扩展</h4><p>明文被扩展到512位的倍数位，每个512位为一组进行加密处理。将每个512位的消息块分成16个32位的子块（标记为 W[0] 到 W[15]）。<br>    然后，通过以下公式，将这16个子块扩展成80个32位的子块（标记为 W[16] 到 W[79]）：</p>
+<p><strong><code>W[t]=(W[t−3]⊕W[t−8]⊕W[t−14]⊕W[t−16])≪1</code></strong></p>
+<h4 id="4-2-初始化工作变量"><a href="#4-2-初始化工作变量" class="headerlink" title="4.2 初始化工作变量"></a>4.2 初始化工作变量</h4><p>在处理每个512位消息块之前，将之前轮次的5个32位哈希值（H0 到 H4）赋值给5个工作变量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A = H0</span><br><span class="line"></span><br><span class="line">B = H1</span><br><span class="line"></span><br><span class="line">C = H2</span><br><span class="line"></span><br><span class="line">D = H3</span><br><span class="line"></span><br><span class="line">E = H4</span><br></pre></td></tr></table></figure>
 
-<p style="text-indent: 2em;">
-消息扩展阶段：最初的16个32位的子块被扩展为80个32位的子块。
-</p>
-
-<p style="text-indent: 2em;">循环操作阶段：循环涉及到布尔函数、模加运算和移位操作，每轮操作会将当前的哈希值与扩展的子块进行复杂的计算。在每轮循环中，SHA-1 使用了4个固定的逻辑运算函数，这些函数根据循环的阶段变化：
-</p>
-
-<p style="text-indent: 2em;">
-    阶段 1 (0 ≤ t ≤ 19): f = (B AND C) OR ((NOT B) AND D)
-
-<p style="text-indent: 2em;">    
-    阶段 2 (20 ≤ t ≤ 39): f = B XOR C XOR D
-
-<p style="text-indent: 2em;">    
-    阶段 3 (40 ≤ t ≤ 59): f = (B AND C) OR (B AND D) OR (C AND D)
-
-<p style="text-indent: 2em;">    
-    阶段 4 (60 ≤ t ≤ 79): f = B XOR C XOR D
-
-
-<p style="text-indent: 2em;">
-每轮运算中，还会使用一个常量值（K），根据不同的阶段，K的值也不同：
-<p style="text-indent: 2em;">    
-    K = 0x5A827999 (0 ≤ t ≤ 19)
-
-<p style="text-indent: 2em;">    
-    K = 0x6ED9EBA1 (20 ≤ t ≤ 39)
-    
-<p style="text-indent: 2em;">    
-    K = 0x8F1BBCDC (40 ≤ t ≤ 59)
-    
-<p style="text-indent: 2em;">    
-    K = 0xCA62C1D6 (60 ≤ t ≤ 79)
-
-
-
-<p style="text-indent: 2em;">
-上面这里只是大概梳理了一下消息处理的过程（目的是为了有基础的了解），然后这里再详细解释一下。
-</p>
-
-<h3 id="4-1-消息扩展步骤"><a href="#4-1-消息扩展步骤" class="headerlink" title="4.1 消息扩展步骤"></a>4.1 消息扩展步骤</h3><h3 id="4-1-1-消息扩展"><a href="#4-1-1-消息扩展" class="headerlink" title="4.1.1 消息扩展"></a>4.1.1 消息扩展</h3><p style="text-indent: 2em;">
-明文被扩展到512位的倍数位，每个512位为一组进行加密处理。将每个512位的消息块分成16个32位的子块（标记为 W[0] 到 W[15]）。
-</p>
-<p style="text-indent: 2em;">
-然后，通过以下公式，将这16个子块扩展成80个32位的子块（标记为 W[16] 到 W[79]）：
-</p>
-
-<blockquote>
-<p>W[t]=(W[t−3]⊕W[t−8]⊕W[t−14]⊕W[t−16])≪1</p>
-</blockquote>
-<h3 id="4-1-2-初始化工作变量"><a href="#4-1-2-初始化工作变量" class="headerlink" title="4.1.2 初始化工作变量"></a>4.1.2 初始化工作变量</h3><p style="text-indent: 2em;">
-在处理每个512位消息块之前，将之前轮次的5个32位哈希值（H0 到 H4）赋值给5个工作变量：
-</p>
-
-<p style="text-indent: 2em;">    A = H0
-
-<p style="text-indent: 2em;">    B = H1
-
-<p style="text-indent: 2em;">    C = H2
-
-<p style="text-indent: 2em;">    D = H3
-
-<p style="text-indent: 2em;">    E = H4
-
-<h3 id="4-1-3-80轮主循环"><a href="#4-1-3-80轮主循环" class="headerlink" title="4.1.3 80轮主循环"></a>4.1.3 80轮主循环</h3><p style="text-indent: 2em;">
-对于每一个子块 W[t]，SHA-1 进行80轮的迭代运算。每一轮的操作包括以下步骤：
-<p style="text-indent: 2em;">
-计算临时变量 T：（这个T值会在后续的变量变换中有用）
-
-<blockquote>
-<p>T=(A≪5)+f(B,C,D)+E+W[t]+K[t]</p>
-</blockquote>
-<p>（其中f(B,C,D)就是上面说的当前轮次下的布尔函数，K就是上面说的当前轮次下的常量值）</p>
-<p style="text-indent: 2em;">计算出T值后进行变量更新，更新5个工作变量（A,B,C,D,E）：
-<p style="text-indent: 2em;">E = D
-<p style="text-indent: 2em;">D = C
-<p style="text-indent: 2em;">C = B << 30（将 B 左移30位）
-<p style="text-indent: 2em;">B = A
-<p style="text-indent: 2em;">A = T
-
-<h3 id="4-1-4-哈希值更新"><a href="#4-1-4-哈希值更新" class="headerlink" title="4.1.4 哈希值更新"></a>4.1.4 哈希值更新</h3><p style="text-indent: 2em;">80轮循环结束后，A,B,C,D,E 这5个工作变量的值会发生改变，最后将这5个变量值累加到当前的哈希值中：
-<p style="text-indent: 2em;">H0 = H0 + A
-<p style="text-indent: 2em;">H1 = H1 + B
-<p style="text-indent: 2em;">H2 = H2 + C
-<p style="text-indent: 2em;">H3 = H3 + D
-<p style="text-indent: 2em;">H4 = H4 + E
-
-<p style="text-indent: 2em;">注意到这里还未结束，这只是处理了第一个512位（第一组），后续组的处理方式虽也是如此，但是后续的H0~H4的值都依赖于前一组的计算。
-而当所有的消息块都处理完毕后，得到的H0到H4的值就组成了最终的160位哈希值输出。
-
+<h4 id="4-3-80轮主循环"><a href="#4-3-80轮主循环" class="headerlink" title="4.3 80轮主循环"></a>4.3 80轮主循环</h4><p>对于每一个子块 W[t]，SHA-1 进行80轮的迭代运算。每一轮的操作包括以下步骤：</p>
+<p><strong>1. 计算临时变量 T</strong>：（这个T值会在后续的变量变换中有用）</p>
+<p><strong><code>T=(A≪5)+f(B,C,D)+E+W[t]+K[t]</code></strong><br>（其中f(B,C,D)就是上面说的当前轮次下的布尔函数，K就是上面说的当前轮次下的常量值）</p>
+<p><strong>2. 计算出T值后进行5个变量更新</strong>（A,B,C,D,E）：<br>    <code>E = D</code><br>    <code>D = C</code><br>    <code>C = B &lt;&lt; 30（将 B 左移30位）</code><br>    <code>B = A</code><br>    <code>A = T</code></p>
+<h4 id="4-4-哈希值更新"><a href="#4-4-哈希值更新" class="headerlink" title="4.4 哈希值更新"></a>4.4 哈希值更新</h4><p>80轮循环结束后，A,B,C,D,E 这5个工作变量的值会发生改变，最后将这5个变量值累加到当前的哈希值中：<br>    <code>H0 = H0 + A</code><br>    <code>H1 = H1 + B</code><br>    <code>H2 = H2 + C</code><br>    <code>H3 = H3 + D</code><br>    <code>H4 = H4 + E</code><br>    注意到这里还未结束，这只是处理了第一个512位（第一组），后续组的处理方式虽也是如此，但是后续的H0~H4的值都依赖于前一组的计算。<br>    而当所有的消息块都处理完毕后，得到的H0到H4的值就组成了最终的160位哈希值输出。</p>
 <h1 id="SHA-256"><a href="#SHA-256" class="headerlink" title="SHA-256"></a>SHA-256</h1><p>SHA-256会接收任意长度的输入数据，并将其转换为固定长度的256位（32字节）哈希值。</p>
-<p>SHA-256与SHA-1的相同点：</p>
-<p style="text-indent: 2em;">SHA-256的填充方式与SHA-1一致，同时也是按照64字节（512）分组处理。
+<p>SHA-256与SHA-1的<em><strong>相同点</strong></em>：</p>
+<p>SHA-256的填充方式与SHA-1一致，同时也是按照64字节（512）分组处理。</p>
+<p>SHA-256与SHA-1的<em><strong>不同点</strong></em>：</p>
+<p><strong>1. SHA-256使用8个32位的初始哈希值：</strong><br>    <code>H0 = 0x6a09e667</code><br>    <code>H1 = 0xbb67ae85</code><br>    <code>H2 = 0x3c6ef372</code><br>    <code>H3 = 0xa54ff53a</code><br>    <code>H4 = 0x510e527f</code><br>    <code>H5 = 0x9b05688c</code><br>    <code>H6 = 0x1f83d9ab</code><br>    <code>H7 = 0x5be0cd19</code></p>
+<p><strong>2. SHA-256在消息扩充时，只会扩充到64组，同时扩展公式也更加复杂：</strong></p>
+<p><strong><code>W[t]=σ1​(W[t−2])+W[t−7]+σ0​(W[t−15])+W[t−16]</code></strong></p>
+<p>​        <strong>其中</strong>：</p>
+<p><strong><code>σ0​(x)=(x≫7)⊕(x≫18)⊕(x≫3)</code></strong></p>
+<p><strong><code>σ1(x)=(x≫17)⊕(x≫19)⊕(x≫10)</code></strong></p>
+<p><strong>3. SHA-256只进行64轮计算：</strong></p>
+<p>这64轮压缩计算的每一轮计算会用到前面扩展的消息字和一组 64 个常量 K。这些K值是从前 64 个素数的立方根的小数部分提取出来的，具体值如下：<br>    K0 = 0x428a2f98, K1 = 0x71374491, …, K63 = 0xc67178f2</p>
+<p><strong>4. SHA-256更新变量的方式：</strong></p>
+<p><em><strong>1）</strong></em>计算两个主要的逻辑函数：</p>
+<p>​    选择函数（Ch）：**<code>Ch(e,f,g)=(e&amp;f)⊕((∼e)&amp;g)</code>**</p>
+<p>​    多数函数（Maj）：**<code>Maj(a,b,c)=(a&amp;b)⊕(a&amp;c)⊕(b&amp;c)</code>**</p>
+<p><em><strong>2）</strong></em>计算两个额外的非线性函数：</p>
+<p>​    Σ0：**<code>Σ0(a)=(a≫2)⊕(a≫13)⊕(a≫22)</code>**</p>
+<p>​    Σ1：**<code>Σ1(e)=(e≫6)⊕(e≫11)⊕(e≫25)</code>**</p>
+<p><strong>5. 有了以上这四个值后，每轮的压缩操作按照以下步骤进行：</strong></p>
+<p><em><strong>1）</strong></em>计算 T1 和 T2：</p>
+<p>​    <strong><code>T1=h+Σ1(e)+Ch(e,f,g)+Kt+Wt</code></strong></p>
+<p>​    <strong><code>T2=Σ0(a)+Maj(a,b,c)</code></strong></p>
+<p><em><strong>2）</strong></em>更新8个变量值：</p>
+<p>​    <code>h=g</code></p>
+<p>​    <code>g=f</code></p>
+<p>​    <code>e=d+T1</code></p>
+<p>​    <code>d=c</code></p>
+<p>​    <code>c=b</code></p>
+<p>​    <code>b=a</code></p>
+<p>​    <code>a=T1+T2</code></p>
+<p><strong>6. SHA-256在每一轮更新完变量后就会更新前一轮的哈希值（H0~H7）：</strong></p>
+<p>​    <code>H0 = H0 +a</code></p>
+<p>​    <code>H1 = H1 + b</code></p>
+<p>​    <code>...</code></p>
+<p>​    <code>H7 = H7 + h</code></p>
+<p>以此类推，最后的哈希值（H0~H7）就会包含每一组的计算结果，从而形成256位加密哈希值。</p>
 
-<p>SHA-256与SHA-1的不同点：</p>
-<p><strong><p style="text-indent: 2em;">1.SHA-256使用8个32位的初始哈希值：</strong></p>
-<p style="text-indent: 2em;">H0 = 0x6a09e667
-<p style="text-indent: 2em;">H1 = 0xbb67ae85
-<p style="text-indent: 2em;">H2 = 0x3c6ef372
-<p style="text-indent: 2em;">H3 = 0xa54ff53a
-<p style="text-indent: 2em;">H4 = 0x510e527f
-<p style="text-indent: 2em;">H5 = 0x9b05688c
-<p style="text-indent: 2em;">H6 = 0x1f83d9ab
-<p style="text-indent: 2em;">H7 = 0x5be0cd19
-
-<p><strong><p style="text-indent: 2em;">2.SHA-256在消息扩充时，只会扩充到64组（SHA-1会扩充到80组），同时扩展公式也更加复杂：</strong></p>
-<blockquote>
-<p>W[t]=σ1​(W[t−2])+W[t−7]+σ0​(W[t−15])+W[t−16]</p>
-</blockquote>
-<p style="text-indent: 2em;">其中：
-
-<p style="text-indent: 2em;">σ0​(x)=(x≫7)⊕(x≫18)⊕(x≫3)
-
-<p style="text-indent: 2em;">σ1​(x)=(x≫17)⊕(x≫19)⊕(x≫10)
-
-
-
-<p><strong><p style="text-indent: 2em;">3.SHA-256只进行64轮计算。</strong>这64轮压缩计算的每一轮计算会用到前面扩展的消息字和一组 64 个常量 K。这些K值是从前 64 个素数的立方根的小数部分提取出来的，具体值如下：</p>
-<p style="text-indent: 2em;">K0 = 0x428a2f98, K1 = 0x71374491, ..., K63 = 0xc67178f2
-
-<p style="text-indent: 2em;">**4.SHA-256更新变量的方式：**
-
-<p style="text-indent: 4em;">1）计算两个主要的逻辑函数：
-
-<p style="text-indent: 6em;">选择函数（Ch）：Ch(e,f,g)=(e&f)⊕((∼e)&g)
-
-<p style="text-indent: 4em;">这个函数从 e、f、g 中选择，主要决定了 e 的值对 f 和 g 的影响。
-
-<p style="text-indent: 6em;">多数函数（Maj）：Maj(a,b,c)=(a&b)⊕(a&c)⊕(b&c)
-
-<p style="text-indent: 4em;">这个函数用来在 a、b 和 c 中做“多数决策”。
-
-<p style="text-indent: 4em;">2）计算两个额外的非线性函数：
-
-<p style="text-indent: 6em;">Σ0：Σ0​(a)=(a≫2)⊕(a≫13)⊕(a≫22)
-
-<p style="text-indent: 6em;">Σ1：Σ1​(e)=(e≫6)⊕(e≫11)⊕(e≫25)
-
-<p><strong><p style="text-indent: 2em;">5.有了以上这四个值后，每轮的压缩操作按照以下步骤进行：</strong></p>
-<p style="text-indent: 4em;">1、计算 T1 和 T2：
-
-<p style="text-indent: 6em;">T1=h+Σ1​(e)+Ch(e,f,g)+Kt​+Wt
-
-<p style="text-indent: 6em;">T2=Σ0​(a)+Maj(a,b,c)​
-
-<p style="text-indent: 4em;">2、更新8个变量值：
-
-<p style="text-indent: 6em;">h=g
-
-<p style="text-indent: 6em;">g=f
-
-<p style="text-indent: 6em;">e=d+T1
-
-<p style="text-indent: 6em;">d=c
-
-<p style="text-indent: 6em;">c=b
-
-<p style="text-indent: 6em;">b=a
-
-<p style="text-indent: 6em;">a=T1+T2
-
-
-<p><strong><p style="text-indent: 2em;">6.SHA-256在每一轮更新完变量后就会更新前一轮的哈希值（H0~H7）：</strong></p>
-<p style="text-indent: 6em;">H0 = H0 +a
-
-
-<p style="text-indent: 6em;">H1 = H1 + b
-
-
-<p style="text-indent: 6em;">...
-
-
-<p style="text-indent: 6em;">H7 = H7 + h
-
-<p style="text-indent: 2em;">以此类推，最后的哈希值（H0~H7）就会包含每一组的计算结果，从而形成256位加密哈希值。
     
   </article>
 
@@ -611,7 +477,7 @@ SHA-1 使用5个32位的初始常量哈希值，这些值分别被称为H0、H1�
             <button class="mdui-fab catalog" style="overflow:unset;">
                 <i class="nexmoefont icon-i-catalog"></i>
                 <div class="nexmoe-toc">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SHA-1"><span class="toc-number">1.</span> <span class="toc-text">SHA-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B6%88%E6%81%AF%E5%A1%AB%E5%85%85"><span class="toc-number">1.1.1.</span> <span class="toc-text">1 消息填充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B6%88%E6%81%AF%E5%88%86%E5%9D%97"><span class="toc-number">1.1.2.</span> <span class="toc-text">2 消息分块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%9D%E5%A7%8B%E5%93%88%E5%B8%8C"><span class="toc-number">1.1.3.</span> <span class="toc-text">3 初始哈希</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86"><span class="toc-number">1.1.4.</span> <span class="toc-text">4 消息处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%B6%88%E6%81%AF%E6%89%A9%E5%B1%95%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.5.</span> <span class="toc-text">4.1 消息扩展步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-1-%E6%B6%88%E6%81%AF%E6%89%A9%E5%B1%95"><span class="toc-number">1.1.6.</span> <span class="toc-text">4.1.1 消息扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-2-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%A5%E4%BD%9C%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.7.</span> <span class="toc-text">4.1.2 初始化工作变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-3-80%E8%BD%AE%E4%B8%BB%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.1.8.</span> <span class="toc-text">4.1.3 80轮主循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-4-%E5%93%88%E5%B8%8C%E5%80%BC%E6%9B%B4%E6%96%B0"><span class="toc-number">1.1.9.</span> <span class="toc-text">4.1.4 哈希值更新</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SHA-256"><span class="toc-number">2.</span> <span class="toc-text">SHA-256</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SHA-1"><span class="toc-number">1.</span> <span class="toc-text">SHA-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B6%88%E6%81%AF%E5%A1%AB%E5%85%85"><span class="toc-number">1.1.1.</span> <span class="toc-text">1 消息填充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B6%88%E6%81%AF%E5%88%86%E5%9D%97"><span class="toc-number">1.1.2.</span> <span class="toc-text">2 消息分块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%9D%E5%A7%8B%E5%93%88%E5%B8%8C"><span class="toc-number">1.1.3.</span> <span class="toc-text">3 初始哈希</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86"><span class="toc-number">1.1.4.</span> <span class="toc-text">4 消息处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E6%B6%88%E6%81%AF%E6%89%A9%E5%B1%95"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">4.1 消息扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%A5%E4%BD%9C%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">4.2 初始化工作变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-80%E8%BD%AE%E4%B8%BB%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">4.3 80轮主循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-%E5%93%88%E5%B8%8C%E5%80%BC%E6%9B%B4%E6%96%B0"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">4.4 哈希值更新</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SHA-256"><span class="toc-number">2.</span> <span class="toc-text">SHA-256</span></a></li></ol>
                 </div>
             </button>
             

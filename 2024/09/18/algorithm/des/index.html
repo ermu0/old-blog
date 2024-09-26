@@ -6,12 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
 <link rel="shortcut icon" href="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" type="image/png" />
-<meta name="description" content="原理DES会将数据分成左右两部分然后反复进行加密操作，这种加密框架被称作Feistel。（这里不细究这个框架） 1 初始置换（IP置换）在开始加密前，DES会对64位明文数据进行一个固定的置换操作，经过该操作后64位明文数据被分为左右两部分（各32位，4字节） 初始置换表如下： 这个表的用法，举个例子，第一位的输出应该是原64位数据的第58位，第二位的输出是原64位数据的第50位，以此类推。 2">
+<meta name="description" content="原理DES会将数据分成左右两部分然后反复进行加密操作，这种加密框架被称作Feistel。（这里不细究这个框架） 1 初始置换（IP置换）在开始加密前，DES会对64位明文数据进行一个固定的置换操作，经过该操作后64位明文数据被分为左右两部分（各32位，4字节）    &#x3D;&#x3D;初始置换表&#x3D;&#x3D;如下： 这个表的用法，举个例子，第一位的输出应该是原64位数据的第58位，第二位的输出是原64位数据的第50位，以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DES">
 <meta property="og:url" content="http://ermu0.github.io/2024/09/18/algorithm/des/index.html">
 <meta property="og:site_name" content="Em_Lin">
-<meta property="og:description" content="原理DES会将数据分成左右两部分然后反复进行加密操作，这种加密框架被称作Feistel。（这里不细究这个框架） 1 初始置换（IP置换）在开始加密前，DES会对64位明文数据进行一个固定的置换操作，经过该操作后64位明文数据被分为左右两部分（各32位，4字节） 初始置换表如下： 这个表的用法，举个例子，第一位的输出应该是原64位数据的第58位，第二位的输出是原64位数据的第50位，以此类推。 2">
+<meta property="og:description" content="原理DES会将数据分成左右两部分然后反复进行加密操作，这种加密框架被称作Feistel。（这里不细究这个框架） 1 初始置换（IP置换）在开始加密前，DES会对64位明文数据进行一个固定的置换操作，经过该操作后64位明文数据被分为左右两部分（各32位，4字节）    &#x3D;&#x3D;初始置换表&#x3D;&#x3D;如下： 这个表的用法，举个例子，第一位的输出应该是原64位数据的第58位，第二位的输出是原64位数据的第50位，以">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-17T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-09-17T16:00:00.000Z">
@@ -23,15 +23,15 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1726666381045">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1727335020060">
 
-<link rel="stylesheet" href="/css/style.css?v=1726666381045">
+<link rel="stylesheet" href="/css/style.css?v=1727335020060">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1726666381045">
+        <link rel="stylesheet" href="/custom.css?v=1727335020060">
     
 
 
@@ -41,7 +41,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1726666381045"></script>
+<script async src="/js/app.js?v=1727335020060"></script>
 
  
 
@@ -72,9 +72,9 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>10</div>
-        <div><span>标签</span>2</div>
-        <div><span>分类</span>2</div>
+        <div><span>文章</span>11</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>3</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -99,7 +99,7 @@
             </div>
         </a>
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博主">
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="https://ermu0.github.io/2024/09/10/hello-world/" title="关于博主">
             <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
             <div class="mdui-list-item-content">
                 关于博主
@@ -200,6 +200,13 @@
         
 
         <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Android/">Android</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
           <a class="category-list-link" href="/categories/加密算法/">加密算法</a>
           <span class="category-list-count">6</span>
         </li>
@@ -223,12 +230,12 @@
         
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/tasks/" style="font-size: 20px;">tasks</a> <a href="/tags/%E7%AE%80%E4%BB%8B/" style="font-size: 10px;">简介</a>
+      <a href="/tags/DEX/" style="font-size: 10px;">DEX</a> <a href="/tags/tasks/" style="font-size: 20px;">tasks</a> <a href="/tags/%E7%AE%80%E4%BB%8B/" style="font-size: 10px;">简介</a>
     </div>
     
       <script>
         var maxTagcloud = parseInt(17);
-        var tags_length = parseInt(2);
+        var tags_length = parseInt(3);
         var tags_arr = [];
         for(var i = 0; i < tags_length; i++){
           tags_arr.push(i);
@@ -251,7 +258,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -264,6 +271,10 @@
     <h3 class="nexmoe-widget-title">最新文章</h3>
     <div class="nexmoe-widget">
       <ul>
+        
+          <li>
+            <a href="/2024/09/26/Android/01.DEX/">DEX文件格式（一）</a>
+          </li>
         
           <li>
             <a href="/2024/09/18/algorithm/tea/">TEA</a>
@@ -279,10 +290,6 @@
         
           <li>
             <a href="/2024/09/18/algorithm/md5/">MD5</a>
-          </li>
-        
-          <li>
-            <a href="/2024/09/17/reverse/tasks/task0_day3/">task0_day3</a>
           </li>
         
       </ul>
@@ -329,52 +336,40 @@
 </div>
 
     <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>DES会将数据分成左右两部分然后反复进行加密操作，这种加密框架被称作Feistel。（这里不细究这个框架）</p>
-<h2 id="1-初始置换（IP置换）"><a href="#1-初始置换（IP置换）" class="headerlink" title="1 初始置换（IP置换）"></a>1 初始置换（IP置换）</h2><p>在开始加密前，DES会对64位明文数据进行一个固定的置换操作，经过该操作后64位明文数据被分为左右两部分（各32位，4字节）</p>
-<p>初始置换表如下：</p>
+<h2 id="1-初始置换（IP置换）"><a href="#1-初始置换（IP置换）" class="headerlink" title="1 初始置换（IP置换）"></a>1 初始置换（IP置换）</h2><p>在开始加密前，DES会对64位明文数据进行一个固定的置换操作，经过该操作后64位明文数据被分为左右两部分（各32位，4字节）<br>    ==初始置换表==如下：</p>
 <p>这个表的用法，举个例子，第一位的输出应该是原64位数据的第58位，第二位的输出是原64位数据的第50位，以此类推。</p>
 <h2 id="2-加密迭代16轮"><a href="#2-加密迭代16轮" class="headerlink" title="2 加密迭代16轮"></a>2 加密迭代16轮</h2><p>每一轮加密的主体如下公式表示：</p>
-<ul>
-<li>Li+1​=Ri</li>
-<li>Ri+1​=Li​⊕F(Ri​,Ki​)</li>
-</ul>
+<p><strong><code>Li+1=Ri</code></strong><br>    <strong><code>Ri+1=Li⊕F(Ri,Ki)</code></strong></p>
 <p>其中Li和Ri是每一轮下64位数据的左右部分，Ki是第i轮的子密钥，而F函数则是加密核心。</p>
 <p>下面就来说一说子密钥是怎样生成的，而F函数又是什么。</p>
-<h3 id="2-1-关于F函数的详细步骤"><a href="#2-1-关于F函数的详细步骤" class="headerlink" title="2.1 关于F函数的详细步骤"></a>2.1 关于F函数的详细步骤</h3><p>首先来说一说F函数，F函数主要由4个部分依次组成：</p>
-<p>扩展置换、子密钥异或、S盒置换以及P盒置换。</p>
+<h3 id="2-1-关于F函数的详细步骤"><a href="#2-1-关于F函数的详细步骤" class="headerlink" title="2.1 关于F函数的详细步骤"></a>2.1 关于F函数的详细步骤</h3><p>首先来说一说F函数，F函数主要由4个部分依次组成：<br>    <em><strong>扩展置换</strong></em>、<em><strong>子密钥异或</strong></em>、<em><strong>S盒置换</strong></em>以及<em><strong>P盒置换</strong></em>。</p>
 <p><strong>1. 扩展置换</strong></p>
-<p>这一步会将Ri，也就是初始置换后的右半部分（32位，4字节）数据扩展成48位的数据。</p>
-<p>扩展的目的主要是为了和子密钥（48位）保持位数一致。</p>
-<p>扩展置换会通过一个固定的置换表进行操作，如下图：</p>
-<p>置换操作其实和初始置换操作差不多，比如第一位的输出应该是当前32位数据的第32位，第二位的输出则是当前32位数据的第1位，以此类推，按照每位的编号进行映射输出，同时部分位会被重复使用。</p>
+<p>这一步会将Ri，也就是初始置换后的右半部分（32位，4字节）数据扩展成48位的数据。<br>    扩展的目的主要是为了和子密钥（48位）保持位数一致。<br>    扩展置换会通过一个==固定的置换表==进行操作，如下图：<br>    置换操作其实和初始置换操作差不多，比如第一位的输出应该是当前32位数据的第32位，第二位的输出则是当前32位数据的第1位，以此类推，按照每位的编号进行映射输出，同时部分位会被重复使用。</p>
 <p><strong>2. 子密钥异或</strong></p>
 <p>就是将扩展后的48位数据依次和子密钥的48位对应异或。后面会说明为什么密钥会变成48位，而不是56位。</p>
 <p><strong>3. S盒置换</strong></p>
 <p>将与子密钥异或后的48位数据分成8组，每组6位数据，然后将这8组数据分别依次投入到8个不同的S盒中，通过置换将每组6位数据变成每组4位进行输出。</p>
-<p>S盒置换过程：</p>
-<ul>
-<li>每个盒子均使用4行*16列的置换表，输入的6位数据，取第1位和第6位为行号，取第2位到第5位为列号。</li>
-</ul>
-<p>举个例子：假设有6位输入100011，那么行号就是11（十进制：3），列号则为0001（十进制：1），那么我们需要查找的数据位置则是4行2列，即如果4行2列的值为1100，那么最后替换输出的4位结果就是1100。</p>
+<p><em><strong>S盒置换过程</strong></em>：<br>    每个盒子均使用4行*16列的置换表，输入的6位数据，取第1位和第6位为行号，取第2位到第5位为列号。<br>    举个例子：假设有6位输入100011，那么行号就是11（十进制：3），列号则为0001（十进制：1），那么我们需要查找的数据位置则是4行2列，即如果4行2列的值为1100，那么最后替换输出的4位结果就是1100。</p>
 <p><strong>4. P盒置换</strong></p>
 <p>通过S盒置换后，原先的48位数据会重新变成32位，然后这32位数据会再经过一个固定的置换，也就是P盒置换，才能完成F函数。</p>
-<p>P盒置换表如下：</p>
+<p>==P盒置换表==如下：</p>
 <p>替换的规则与初始置换一致，只是表不同。</p>
-<h3 id="2-2-关于子密钥生成步骤"><a href="#2-2-关于子密钥生成步骤" class="headerlink" title="2.2 关于子密钥生成步骤"></a>2.2 关于子密钥生成步骤</h3><p>16轮加密，每一轮都需要一个48位的子密钥。子密钥的生成主要包括四个步骤：PC-1置换、分割、循环左移 以及 PC-2置换。</p>
+<h3 id="2-2-关于子密钥生成步骤"><a href="#2-2-关于子密钥生成步骤" class="headerlink" title="2.2 关于子密钥生成步骤"></a>2.2 关于子密钥生成步骤</h3><p>16轮加密，每一轮都需要一个48位的子密钥。子密钥的生成主要包括四个步骤：<em><strong>PC-1置换</strong></em>、<em><strong>分割</strong></em>、<em><strong>循环左移</strong></em> 以及 <em><strong>PC-2置换</strong></em>。</p>
 <p><strong>1. PC-1置换</strong></p>
-<p>这一步是将64位密钥经过PC-1表置换后，去掉8位的奇偶校验位（因为DES的密钥每8位就有1位是奇偶校验位，这个校验位对与加密来说是无用的，所以要去掉），并将剩下的56位密钥数据按照非线性规则重新排列。</p>
-<p>PC-1置换表如下：</p>
+<p>这一步是将64位密钥经过PC-1表置换后，去掉8位的奇偶校验位（<u>因为DES的密钥每8位就有1位是奇偶校验位，这个校验位对与加密来说是无用的，所以要去掉</u>），并将剩下的56位密钥数据按照非线性规则重新排列。</p>
+<p>==PC-1置换表==如下：</p>
 <p>置换规则与初始置换表一致。</p>
 <p><strong>2. 分割</strong></p>
 <p>与名字一致，将PC-1置换后的56位数据进行分割，每部分28位。</p>
 <p><strong>3. 循环左移</strong></p>
 <p>分别对分割后的两部分（28位）数据进行循环左移，注意，不同轮次循环左移的位数不同</p>
-<p>具体的轮次左移位数如下：<br>轮次 1：左移 1 次<br>轮次 2：左移 1 次<br>轮次 3：左移 2 次<br>轮次 4：左移 2 次<br>轮次 5：左移 2 次<br>轮次 6：左移 2 次<br>轮次 7：左移 2 次<br>轮次 8：左移 2 次<br>轮次 9：左移 1 次<br>轮次 10：左移 2 次<br>轮次 11：左移 2 次<br>轮次 12：左移 2 次<br>轮次 13：左移 2 次<br>轮次 14：左移 2 次<br>轮次 15：左移 2 次<br>轮次 16：左移 1 次</p>
+<p>具体的轮次左移位数如下：<br>| 轮次 | 移动位数 |<br>| :–: | :——: |<br>|  1   |    1     |<br>|  2   |    1     |<br>|  3   |    2     |<br>|  4   |    2     |<br>|  5   |    2     |<br>|  6   |    2     |<br>|  7   |    2     |<br>|  8   |    2     |<br>|  9   |    1     |<br>|  10  |    2     |<br>|  11  |    2     |<br>|  12  |    2     |<br>|  13  |    2     |<br>|  14  |    2     |<br>|  15  |    2     |<br>|  16  |    1     |</p>
 <p><strong>4. PC-2置换</strong></p>
 <p>这一步会将移位合并后的结果通过PC-2置换，最后选择48位来作为该轮次下的子密钥。</p>
-<p>PC-2置换表如下：</p>
+<p>==PC-2置换表==如下：</p>
 <p>置换规则与初始置换一致。</p>
 <h2 id="3-最终置换（FP置换-逆置换）"><a href="#3-最终置换（FP置换-逆置换）" class="headerlink" title="3 最终置换（FP置换\逆置换）"></a>3 最终置换（FP置换\逆置换）</h2><p>上面16加密结束后，再经过一个与初始置换相反的置换操作，就可以得到想要的64位密文。</p>
-<p>最终置换表如下：</p>
+<p>==最终置换表==如下：</p>
 <p>置换规则与初始置换一致。</p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>[1]<a target="_blank" rel="noopener" href="https://blog.csdn.net/Demonslzh/article/details/129129493" title="《十分钟读懂DES》——Demonslzh6，CSDN">https://blog.csdn.net/Demonslzh/article/details/129129493</a></p>
 

@@ -1,37 +1,34 @@
 <!doctype html>
 <html lang="zh"><head>
-<title>TEA - Em_Lin</title>
+<title>分类：Android - Em_Lin</title>
 <meta charset="UTF-8">
 <meta name="keywords" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
 <link rel="shortcut icon" href="https://c.img.dasctf.com/LightPicture/2024/09/0560a6b114c0b93c.png" type="image/png" />
-<meta name="description" content="tea加密算法是比较简单的分组加密算法 TEA原理TEA处理的数据块大小为64位（8字节），密钥长度为128位，基本操作包括32轮的加密循环。  TEA每次处理64位的数据块，然后将其分为两个32位（4字节）的部分；接着使用128位的密钥，同样的，也要讲密钥进行顺序分组，一共分成4组，每个部分32位（4字节）。  同时还有一个delta ，它是一个常数，通常为 0x9E3779B9，它是黄金分割比">
-<meta property="og:type" content="article">
-<meta property="og:title" content="TEA">
-<meta property="og:url" content="http://ermu0.github.io/2024/09/18/algorithm/tea/index.html">
+<meta name="description" content="菜鸟、工作、好卷">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Em_Lin">
+<meta property="og:url" content="http://ermu0.github.io/categories/Android/index.html">
 <meta property="og:site_name" content="Em_Lin">
-<meta property="og:description" content="tea加密算法是比较简单的分组加密算法 TEA原理TEA处理的数据块大小为64位（8字节），密钥长度为128位，基本操作包括32轮的加密循环。  TEA每次处理64位的数据块，然后将其分为两个32位（4字节）的部分；接着使用128位的密钥，同样的，也要讲密钥进行顺序分组，一共分成4组，每个部分32位（4字节）。  同时还有一个delta ，它是一个常数，通常为 0x9E3779B9，它是黄金分割比">
+<meta property="og:description" content="菜鸟、工作、好卷">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-09-17T16:36:52.569Z">
-<meta property="article:modified_time" content="2024-09-17T16:36:52.569Z">
 <meta property="article:author" content="Em_Lin">
-<meta property="article:tag" content="tasks">
 <meta name="twitter:card" content="summary">
 
 <link rel="stylesheet" href="/lib/fancybox/fancybox.css">
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1727335020047">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1727335020119">
 
-<link rel="stylesheet" href="/css/style.css?v=1727335020047">
+<link rel="stylesheet" href="/css/style.css?v=1727335020119">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1727335020047">
+        <link rel="stylesheet" href="/custom.css?v=1727335020119">
     
 
 
@@ -41,7 +38,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1727335020047"></script>
+<script async src="/js/app.js?v=1727335020119"></script>
 
  
 
@@ -311,20 +308,22 @@
 -->    
 
     </div>
-</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
-  <article>
-    
-        <div class="nexmoe-post-cover"> 
-            <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="TEA" loading="lazy">
-            <h1>TEA</h1>
-        </div>
-    
-    
-    <div class="nexmoe-post-meta">
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><section class="nexmoe-posts">
+    <div class="nexmoe-post">
+        <a href="/2024/09/26/Android/01.DEX/">
+            
+                <div class="nexmoe-post-cover mdui-ripple"> 
+                    <img src="https://c.img.dasctf.com/LightPicture/2024/09/24b88941b6afcc33.png" alt="DEX文件格式（一）" loading="lazy">
+                    <h1>DEX文件格式（一）</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2024年09月18日</a>
+        <a class="nexmoefont icon-calendar-fill">2024年09月26日</a>
         
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a>
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/Android/">Android</a>
         
         
     </div>
@@ -335,78 +334,16 @@
     
 </div>
 
-    <p>tea加密算法是比较简单的分组加密算法</p>
-<h2 id="TEA"><a href="#TEA" class="headerlink" title="TEA"></a>TEA</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p style="text-indent: 2em;">TEA处理的数据块大小为64位（8字节），密钥长度为128位，基本操作包括32轮的加密循环。
-
-<p style="text-indent: 2em;">TEA每次处理64位的数据块，然后将其分为两个32位（4字节）的部分；接着使用128位的密钥，同样的，也要讲密钥进行顺序分组，一共分成4组，每个部分32位（4字节）。
-
-<p style="text-indent: 2em;">同时还有一个delta ，它是一个常数，通常为 0x9E3779B9，它是黄金分割比例乘以2的幂，确保加密过程中的变化足够混乱。
-
-<p>加密核心公式为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//将数据块分割成两部分，每个部分有8字节</span></span><br><span class="line">v0 = byte[<span class="number">0</span>];</span><br><span class="line">v1 = byte[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">DELTA = <span class="number">0x9E3779B9</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)&#123;</span><br><span class="line">    sum += DELTA</span><br><span class="line">    v0 += ((v1 &lt;&lt; <span class="number">4</span>) + k[<span class="number">0</span>]) ^ (v1 + sum) ^ ((v1 &gt;&gt; <span class="number">5</span>) + k[<span class="number">1</span>]);</span><br><span class="line">    v1 += ((v0 &lt;&lt; <span class="number">4</span>) + k[<span class="number">2</span>]) ^ (v0 + sum) ^ ((v0 &gt;&gt; <span class="number">5</span>) + k[<span class="number">3</span>]);</span><br><span class="line">    v0 &amp;= <span class="number">0xFFFFFFFF</span>;<span class="comment">// 保证32位        </span></span><br><span class="line">    v1 &amp;= <span class="number">0xFFFFFFFF</span>;<span class="comment">// 保证32位</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>解密核心公式为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//将加密后数据块分割成两部分，每个部分有8字节</span></span><br><span class="line">v0 = byte[<span class="number">0</span>];</span><br><span class="line">v1 = byte[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)&#123;</span><br><span class="line">    v1 -= ((v0 &lt;&lt; <span class="number">4</span>) + k[<span class="number">2</span>]) ^ (v0 + sum) ^ ((v0 &gt;&gt; <span class="number">5</span>) + k[<span class="number">3</span>]);</span><br><span class="line">    v1 &amp;= <span class="number">0xFFFFFFFF</span># 保证<span class="number">32</span>位    </span><br><span class="line">    v0 -= ((v1 &lt;&lt; <span class="number">4</span>) + k[<span class="number">0</span>]) ^ (v1 + sum) ^ ((v1 &gt;&gt; <span class="number">5</span>) + k[<span class="number">1</span>]);</span><br><span class="line">    v0 &amp;= <span class="number">0xFFFFFFFF</span>;<span class="comment">// 保证32位    </span></span><br><span class="line">    sum -= DELTA</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-    
-  </article>
-
-  
-      
-    <div class="nexmoe-post-copyright">
-        <strong>本文作者：</strong>Em_Lin<br>
-        <strong>本文链接：</strong><a href="http://ermu0.github.io/2024/09/18/algorithm/tea/" title="http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;18&#x2F;algorithm&#x2F;tea&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;ermu0.github.io&#x2F;2024&#x2F;09&#x2F;18&#x2F;algorithm&#x2F;tea&#x2F;</a><br>
-        
-            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0 CN</a> 协议进行许可
-
-        
+        <article>
+            
+        </article>
     </div>
-
-
-  
-  
-  <div class="nexmoe-post-meta nexmoe-rainbow">
-   
-    
-        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/tasks/" rel="tag">tasks</a>
-    
-</div>
-  
-  
-
-  
-      <div class="nexmoe-post-footer">
-          <script src="https://giscus.app/client.js"
-    data-repo="nexmoe/nexmoe.com"
-    data-repo-id="R_kgDOJI1XUA"
-    data-category="General"
-    data-category-id="DIC_kwDOJI1XUM4CU1nn"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="preferred_color_scheme"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
-      </div>
-  
-</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+</section> </div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
         <div class="nexmoe-tool">
 
             
 
             
-            
-            <button class="mdui-fab catalog" style="overflow:unset;">
-                <i class="nexmoefont icon-i-catalog"></i>
-                <div class="nexmoe-toc">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TEA"><span class="toc-number">1.</span> <span class="toc-text">TEA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a></li></ol></li></ol>
-                </div>
-            </button>
             
 
             
